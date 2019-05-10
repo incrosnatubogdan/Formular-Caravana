@@ -630,7 +630,7 @@ error_reporting(1);
             </div>
             <div class="col_sm_12 col_md_6">
                 <h3>CONSULTURI SUPLIMENTARE:</h3>
-                <input type="text" name="statistica_consultari_suplimentare">
+                <input type="text" name="statistica_consultari_suplimentare" class="hide">
                 <div class="checkbox_holder" id="consultari_suplimentare"></div>
                 <select name="consultari_suplimentare[]" id="consultari_suplimentare" multiple="multiple">
                     <option value="fara_consulturi">fără alte consulturi</option>
@@ -647,7 +647,7 @@ error_reporting(1);
                 <input type="text" name="recomandari" class="form_control" />
             </div>
             <div class="col_sm_12">
-                <input type="text" name="statistica_diagnostice_vechi">
+                <input type="text" name="statistica_diagnostice_vechi" class="hide">
                 <label>DIAGNOSTICE VECHI:</label>
                 <select name="diagnostice_vechi[]" id="diagnostice_vechi" multiple="multiple" class="select2 important">
                         <optgroup label="IMC">
@@ -701,7 +701,7 @@ error_reporting(1);
             </div>
             <div class="col_sm_12">
                 <label>DIAGNOSTICE NOI:</label>
-                <input type="text" name="statistica_diagnostice_noi">
+                <input type="text" name="statistica_diagnostice_noi" class="hide">
                 <select name="diagnostice_noi[]" id="diagnostice_noi" multiple="multiple" class="select2 important">
                         <optgroup label="IMC">
                             <option value="status_supraponderal">Status supraponderal</option>
