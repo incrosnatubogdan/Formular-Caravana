@@ -770,7 +770,7 @@ error_reporting(1);
             </div>
             <input type="submit" name="submit" class="btn btn-info submit-button" />
             <button type="submit" name="print" class="top_bar make_pdf" class="submit-button">
-            <img src="assets/print.png">    
+            <img src="assets/print.png">
             Print</button>
             <?php  
             if(isset($message)) {  
@@ -778,6 +778,14 @@ error_reporting(1);
             }  
             ?>
         </form>
+        <footer>
+                <img>
+                <p class="quote">
+                    „Doar o viață trăită pentru alții este o viață care merită trăită" <br>
+                    - Albert Einstein
+                </p>
+                <p class="copyright">Crafted with ❤️ by Tac-Tic Studio © 2019</p>
+            </footer>
     </div>
     
 </body>
