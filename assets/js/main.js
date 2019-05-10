@@ -15,7 +15,7 @@ function addCheckbox() {
             var parentID = $(this).parent().attr("id");
             var text = $(this).text();
             var checkClass = $(this).attr("class");
-            $("div#" + parentID).append("<input class='fake_box "+ checkClass +" ' type='checkbox' name='" + value + "' value='" + value + "'>" + text + "<br>");
+            $("div#" + parentID).append("<div class='check_child'><input class='fake_box "+ checkClass +" ' type='checkbox' name='" + value + "' value='" + value + "'><label for='" + value + "'>" + text + "</label></div>");
         }
         if(jQuery(this).is(":selected") && jQuery(this).parent().attr("multiple")) {
             $('input[type=checkbox][name=' + value + ']').prop('checked', true);
@@ -94,6 +94,15 @@ $(document).ready(function () {
     });
 
     $('input.select_all').on('click', function () {
+        var parentID = $(this).parent().parent().attr("id");
+        var checkStatus = $(this).is(":checked");
+        if (checkStatus == true) {
+            $("select#" + parentID + " option").prop('selected', true);
+            $(this).parent().parent().find("input[type=checkbox]").prop('checked', true);
+        } else {
+            $("select#" + parentID + " option").prop('selected', false);
+            $(this).parent().parent().find("input[type=checkbox]").prop('checked', false);
+        }
     });
 
     $(document).on("keyup", '.inutil input', function (event) {
@@ -103,7 +112,7 @@ $(document).ready(function () {
     })
 
     $(".fake_box").on('click', function () {
-        var parentID = $(this).parent().attr("id");
+        var parentID = $(this).parent().parent().attr("id");
         var value = $(this).val();
         var checkStatus = $(this).is(":checked");
         
@@ -219,7 +228,10 @@ $(document).ready(function () {
     });
 
     $(".submit-button").on('click', function () {
-        $(".text-success").show();
+        $(".text-success").css("display","flex");
+        setTimeout(function () {
+            $(".text-success").hide();
+        }, 5000);
         var lastPatient = $('input[name=name]').val();
         $('.last_patient').text(lastPatient);
         $(".stat_btn").trigger("click");

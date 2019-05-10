@@ -306,6 +306,7 @@ error_reporting(1);
     </div>
     <div class="container" style="width:100%;">
         <div class='text-success'>
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
             <p>Fisa a fost salvata</p>
         </div>
         <h3 class="doc_title">Fisa de urmarire a pacientului CCM</h3>
@@ -572,7 +573,7 @@ error_reporting(1);
                     class="form_control"></textarea>
             </div>
             <div class="col_sm_12 col_md_6">
-                <h3>Aparat genito_urinar</h3>
+                <h3>Aparat genito-urinar</h3>
                 <div class="checkbox_holder" id="aparat_genito_urinar"></div>
                 <select name="aparat_genito_urinar[]" id="aparat_genito_urinar" multiple="multiple">
                     <option class="select_all" value="normal">Normal</option>
@@ -629,7 +630,7 @@ error_reporting(1);
                     class="form_control"></textarea>
             </div>
             <div class="col_sm_12 col_md_6">
-                <h3>CONSULTURI SUPLIMENTARE:</h3>
+                <h3>Consulturi suuplimentare:</h3>
                 <input type="text" name="statistica_consultari_suplimentare" class="hide">
                 <div class="checkbox_holder" id="consultari_suplimentare"></div>
                 <select name="consultari_suplimentare[]" id="consultari_suplimentare" multiple="multiple">
@@ -648,7 +649,7 @@ error_reporting(1);
             </div>
             <div class="col_sm_12">
                 <input type="text" name="statistica_diagnostice_vechi" class="hide">
-                <label>DIAGNOSTICE VECHI:</label>
+                <label>Diagnostice VECHI:</label>
                 <select name="diagnostice_vechi[]" id="diagnostice_vechi" multiple="multiple" class="select2 important">
                         <optgroup label="IMC">
                             <option value="status_supraponderal">Status supraponderal</option>
@@ -700,7 +701,7 @@ error_reporting(1);
                 <textarea type="text" placeholder="Altele" name="observatii_diagnostice_vechi" class="form_control"></textarea>
             </div>
             <div class="col_sm_12">
-                <label>DIAGNOSTICE NOI:</label>
+                <label>Diagnostice NOI:</label>
                 <input type="text" name="statistica_diagnostice_noi" class="hide">
                 <select name="diagnostice_noi[]" id="diagnostice_noi" multiple="multiple" class="select2 important">
                         <optgroup label="IMC">
@@ -765,8 +766,10 @@ error_reporting(1);
                 <label>Fisa intocmita de</label>
                 <input type="text" name="doctor" class="form_control" />
                 <input type="text" name="status" class="status hide" />
-                <input type="checkbox" name="status_check" id="status_check">
-                <label for="scales">Status pacient</label>
+                <div class="check_holder">
+                    <input type="checkbox" name="status_check" class="fake_box" id="status_check">
+                    <label for="scales">Status pacient</label>
+                </div>
             </div>
             <input type="submit" name="submit" class="btn btn-info submit-button" />
             <button type="submit" name="print" class="top_bar make_pdf" class="submit-button">
