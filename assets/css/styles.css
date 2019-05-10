@@ -521,8 +521,11 @@ textarea {
 }
 
 input.important,
-textarea.important {
-    border: 1px solid #E91E63;
+textarea.important,
+select.important,
+.checkbox_holder.important,
+.select2-selection--multiple {
+    border: 1px solid #E91E63 !important;
 }
 
 .login_popup {

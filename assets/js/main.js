@@ -1,6 +1,7 @@
 let inutilHTA = "<div class='inutil hta' data-id='hta'>grad <input name='grad_hta' class='input_1' placeholder='1, 2, 3' type='text'>"
 let inutilDZ = "<div class='inutil dz' data-id='dz'>tip <input name='tip_dz' class='input_1' placeholder='1, 2' type='text'>"
 let seen = "zzseen";
+let dir = "./carav_1/";
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -57,14 +58,18 @@ function getCookie(cname) {
 
 $(document).ready(function () {
     addCheckbox();
+    var loggedCookie = getCookie("logged");
+    if (loggedCookie) {
+        $(".login_popup").hide();
+    }
     $('.select2').select2();
     $(".analize-table").clone().prependTo(".table");
     $(".today").val(today);
     $('.patient, .last_patient').on('click', function () {
         if ($(this).hasClass("seen")) {
-            var name = seen + $(this).text() + '.json';
+            var name = dir + seen + $(this).text() + '.json';
         } else {
-            var name = $(this).text() + '.json';
+            var name = dir + $(this).text() + '.json';
         }
         
         $('.overlay').hide();
@@ -79,6 +84,7 @@ $(document).ready(function () {
                         $('select[id=' + key + ']').val([JSONdata[key]][0]);
                         $('select[id=' + key + ']').trigger('change');
                         $('select[name=' + key + ']').val(JSONdata[key]);
+                        $('input[type=text][name=' + key + '_statistica]').val(JSONdata[key]);
                         $('input[type=checkbox][name=' + key + ']').val([JSONdata[key]]);
                 }
         });
@@ -87,13 +93,7 @@ $(document).ready(function () {
         }, 100);
     });
 
-    $('input.select-all').on('click', function () {
-        
-        // if(!$(this).is(":selected")) {
-        //     $(this).parent().find("input[type=checkbox]").prop('checked', true);
-        // } else {
-        //     $(this).parent().find("input[type=checkbox]").prop('checked', false);
-        // }
+    $('input.select_all').on('click', function () {
     });
 
     $(document).on("keyup", '.inutil input', function (event) {
@@ -106,11 +106,14 @@ $(document).ready(function () {
         var parentID = $(this).parent().attr("id");
         var value = $(this).val();
         var checkStatus = $(this).is(":checked");
+        
 
         if (checkStatus == true) {
             $("select#" + parentID + " option[value=" + value + "]").prop('selected', true);
+            $("select#" + parentID+"").trigger("change");
         } else {
             $("select#" + parentID + " option[value=" + value + "]").prop('selected', false);
+            $("select#" + parentID+"").trigger("change");
         }
 
         if(value == "HTA" && checkStatus == true) {    
@@ -129,7 +132,7 @@ $(document).ready(function () {
             $(".inutil.dz").remove();
         }
 
-        if($(this).hasClass("select-all")) {
+        if($(this).hasClass("select_all")) {
             if (checkStatus == true) {
                 $("select#" + parentID + " option").prop('selected', true);
                 $(this).parent().find("input[type=checkbox]").prop('checked', true);
@@ -145,6 +148,19 @@ $(document).ready(function () {
         $(".text-success").hide();
     });
 
+    $('select').on('change', function() {
+        var currentName = $(this).attr("name");
+        
+        // var statInput = $("input[name=" + parentID + "_statistica]");
+        // statInput.val(statInput.val() + this.value);
+        if ($(this).attr("multiple")) {
+            var valueSelected = $(this).val();
+            var currentName = currentName.substring(0,currentName.length-2);
+            $("input[name=statistica_" + currentName + "]").val(valueSelected)
+        }
+        
+    });
+
     $(".close").on('click', function () {
         $('.overlay').hide();
         $("body").css("height", "auto");
@@ -153,10 +169,6 @@ $(document).ready(function () {
     $(".pacient_nou").on('click', function () {
         location.reload();
     });
-    var loggedCookie = getCookie("logged");
-    if (loggedCookie) {
-        $(".login_popup").hide();
-    }
 
     $(".signin_btn").on('click', function (event) {
         var usernameList = ["caravana_iasi","caravana_bucuresti","caravana_cluj"];
@@ -210,6 +222,7 @@ $(document).ready(function () {
         $(".text-success").show();
         var lastPatient = $('input[name=name]').val();
         $('.last_patient').text(lastPatient);
+        $(".stat_btn").trigger("click");
     });
 
     $("#search_patient").on('keyup', function () {

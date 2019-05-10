@@ -1,9 +1,10 @@
 <?php  
-error_reporting(0);
+error_reporting(1);
  $message = '';  
  $error = '';  
- $directory = dir("./");
-
+ $directory = dir("./carav_1/");
+ $dir_to_save = "./carav_1/";
+ $dir_to_output = "./carav_1/output/";
  $allowed_ext = array(".json"); 
  
  $do_link = TRUE; 
@@ -119,14 +120,11 @@ error_reporting(0);
 
  if(isset($_POST["submit"]))  
  {
-      $filename = $_POST['status'] . $_POST['name'] . ".json";
+      $filename = $dir_to_save.$_POST['status'] . $_POST['name'] . ".json";
       fopen($filename, "w"); 
       if(empty($_POST["name"]))  
       {  
            $error = "<label class='text-danger'>Enter Name</label>";    
-      } elseif(empty($_POST["datanasterii"]))  
-      {  
-           $error = "<label class='text-danger'>Sigur s-a nascut</label>";    
       } else  
       {  
            if(file_exists($filename))  
@@ -134,8 +132,7 @@ error_reporting(0);
                 $current_data = file_get_contents($filename);  
                 $array_data = json_decode($current_data, true);  
                 $extra = array(  
-                     'name' => $_POST['name'],  
-                     'gender' => $_POST["gender"], 
+                     'name' => $_POST['name'],
                      'asigurat' => $_POST["asigurat"], 
                      'varsta' => $_POST['varsta'],
                      'datanasterii' => $_POST['datanasterii'],
@@ -207,7 +204,8 @@ error_reporting(0);
                      'diagnostice_vechi' => $_POST['diagnostice_vechi'],
                      'diagnostice_noi' => $_POST['diagnostice_noi'],
                      'observatii_diagnostice_noi' => $_POST['observatii_diagnostice_noi'],
-                     'observatii_diagnostice_vechi' => $_POST['observatii_diagnostice_vechi']
+                     'observatii_diagnostice_vechi' => $_POST['observatii_diagnostice_vechi'],
+                     'bilant_clinic' => $_POST['bilant_clinic']
                 );  
                 $array_data = $extra;  
                 $final_data = json_encode($array_data);  
@@ -219,14 +217,38 @@ error_reporting(0);
            else  
            {  
                 $error = 'JSON File not exists';  
-           }  
+           }
+           $extra = array(  
+            'Nume' => $_POST['name'],
+            'Asigurat' => $_POST['asigurat'],
+            'Varsta' => $_POST['varsta'],
+            'Data nasterii' => $_POST['datanasterii'],
+            'Talie' => $_POST['Talie'],
+            'Greutate' => $_POST['Greutate'],
+            'Tensiunea arteriala ortostatism' => $_POST['Tensiunea_arteriala_ortostatism'],
+            'Tensiunea arteriala clinostatism' => $_POST['Tensiunea_arteriala_clinostatism'],
+            'Fumator' => $_POST['fumator'],
+            'Pachere An' => $_POST['pachete_an'],
+            'An nefumator' => $_POST['an_nefumator'],
+            'Consultari suplimentare' => $_POST['statistica_consultari_suplimentare'],
+            'Diagnostice vechi' => $_POST['statistica_diagnostice_vechi'],
+            'Diagnostice noi' => $_POST['statistica_diagnostice_noi'],
+            'Bilant Clinic' => $_POST['bilant_clinic']
+            );  
+            $array_data = $extra;  
+            $final_data = json_encode($array_data);
+            $filename = $dir_to_output. $_POST['name'] . ".json";
+            file_put_contents($filename, $current);
+            if(file_put_contents($filename, $final_data))  
+            {  
+                    $message = "<div class='text-success'><p>Fisierul este in curs de printare</p></div>";  
+            }
       }  
      
  }
  if(isset($_POST["print"])) {
     $extra = array(  
-         'name' => $_POST['name'],  
-         'gender' => $_POST["gender"],
+         'name' => $_POST['name'],
          'current_date' => $_POST['current_date'],
          'datanasterii' => $_POST['datanasterii'],
          'diagvechi' => $_POST['diagnostice_vechi'],
@@ -242,7 +264,7 @@ error_reporting(0);
     {  
          $message = "<div class='text-success'><p>Fisierul este in curs de printare</p></div>";  
     }
-}     
+}    
  ?>
 <!DOCTYPE html>
 <html>
@@ -300,20 +322,12 @@ error_reporting(0);
             <input name='grad_hta' class='hide' type='text'>
             <input class='today hide' name="current_date" type='text'>
             <input name='tip_dz' class='hide' type='text'>
-                <label>Name</label>
+                <label>Nume</label>
                 <input id="name" type="text" name="name" class="form_control important" />
             </div>
             <div class="col_half">
-                <label>Gender</label>
-                <select name="gender">
-                    <option value="Masculin">M</option>
-                    <option value="Feminin">F</option>
-                    <option value="Altele">Altul</option>
-                </select>
-            </div>
-            <div class="col_half">
                 <label>Status asigurat</label>
-                <select name="asigurat">
+                <select name="asigurat" class="important">
                     <option value="frontdesk_uitat"></option>
                     <option value="Asigurat">Asigurat</option>
                     <option value="Neasigurat">Neasigurat</option>
@@ -342,11 +356,11 @@ error_reporting(0);
             <h2>Masuratori</h2>
             <div class="col_half">
                 <label>Talie (cm)</label>
-                <input type="text" name="Talie" class="form_control" />
+                <input type="text" name="Talie" class="form_control important" />
             </div>
             <div class="col_half">
                 <label>Greutate (kg)</label>
-                <input type="text" name="Greutate" class="form_control" />
+                <input type="text" name="Greutate" class="form_control important" />
             </div>
             <div class="col_half">
                 <label>Circumferința abdominală (cm)</label>
@@ -358,11 +372,11 @@ error_reporting(0);
             </div>
             <div class="col_half">
                 <label>Tensiunea arteriala în ortostatism (mmHg)</label>
-                <input type="text" name="Tensiunea_arteriala_ortostatism" class="form_control" />
+                <input type="text" name="Tensiunea_arteriala_ortostatism" class="form_control important" />
             </div>
             <div class="col_half">
                 <label>Tensiunea arteriala în clinostatism (mmHg)</label>
-                <input type="text" name="Tensiunea_arteriala_clinostatism" class="form_control" />
+                <input type="text" name="Tensiunea_arteriala_clinostatism" class="form_control important" />
             </div>
             <h2>Anamneza</h2>
             <div class="col_half">
@@ -413,7 +427,8 @@ error_reporting(0);
             </div>
             <div class="col_half">
                 <label>Fumător:</label>
-                <select name="fumator">
+                <select name="fumator" class="important">
+                    <option value="frontdesk_uitat"></option>
                     <option value="Da_prezent">Da(prezent)</option>
                     <option value="Da_trecut">Da(trecut)</option>
                     <option value="Nu">Nu</option>
@@ -421,75 +436,22 @@ error_reporting(0);
             </div>
             <div class="col_half">
                 <label>PA (pachete an)</label>
-                <input type="text" name="pachete_an" class="form_control" />
+                <input type="text" name="pachete_an" class="form_control important" />
             </div>
             <div class="col_half">
                 <label>Ani de cand nu mai fumeaza</label>
-                <input type="text" name="an_nefumator" class="form_control" />
+                <input type="text" name="an_nefumator" class="form_control important" />
             </div>
-            <h2>Chestionar alimentar:</h2>
             <div class="col_half">
-                <label>Nr. de mese/zi</label>
-                <input type="text" name="mese_zi" class="form_control" />
-            </div>
-            <div class="col_sm_12 col_md_6 equal_height">
-                <div class="flex">
-                    <label>Porții de legume (bifati)</label><br>
-                    <input type="radio" name="legume" value=3/zi>3/zi <br>
-                    <input type="radio" name="legume" value="1/zi">1/zi<br>
-                    <input type="radio" name="legume" value="3/sapt">3/sapt<br>
-                    <input type="radio" name="legume" value="<3/sapt">
-                    < 3/sapt 
-                </div>
-                <div class="flex">
-                    <label>Porții de fructe (bifati)</label><br>
-                    <input type="radio" name="fructe" value=3/zi>3/zi <br>
-                    <input type="radio" name="fructe" value="1/zi">1/zi<br>
-                    <input type="radio" name="fructe" value="3/sapt">3/sapt<br>
-                    <input type="radio" name="fructe" value="<3/sapt">
-                    < 3/sapt 
-                </div>
-                <div class="flex">
-                    <label>Porții de lactate (bifati)</label><br>
-                    <input type="radio" name="lactate" value=3/zi>3/zi <br>
-                    <input type="radio" name="lactate" value="1/zi">1/zi<br>
-                    <input type="radio" name="lactate" value="3/sapt">3/sapt<br>
-                    <input type="radio" name="lactate" value="<3/sapt">
-                    < 3/sapt 
-                </div>
-                <div class="flex">
-                    <label>Suplimente alimentare</label><br>
-                    <input type="radio" name="suplimente" value="Da">Da<br>
-                    <input type="radio" name="suplimente" value="Nu">Nu<br>
-                </div>
-                <div class="flex">
-                    <label>Porții de pâine, cereale, paste, orez, făinoase</label><br>
-                    <input type="radio" name="fainoase" value="la fiecare masa">la fiecare masa<br>
-                    <input type="radio" name="fainoase" value="1/zi">1/zi<br>
-                    <input type="radio" name="fainoase" value="<1/zi">
-                    < 1/zi 
-                </div>
-                <div class="flex">
-                    <label>Porții de carne, pește, ouă (bifati)</label><br>
-                    <input type="radio" name="proteine" value="2/zi">2/zi<br>
-                    <input type="radio" name="proteine" value="1/zi">1/zi<br>
-                    <input type="radio" name="proteine" value="2/sapt">2/sapt <br>
-                    <input type="radio" name="proteine" value="<2/sapt">
-                    < 2/sapt <br>
-                </div>
-                <div class="flex">
                     <label>Porții de alcool (completati)</label><br>
                     <input type="radio" name="alcool" value="Da">Da<br>
                     <input type="radio" name="alcool" value="Nu">Nu<br>
                 </div>
-                <div class="flex">
+                <div class="col_half">
                     <label>Daca da: ml de(tip alcool):</label>
                     <input type="text" name="ml_alcool" class="form_control" />
                     <label>de ori/(zi, sapt)</label>
                     <input type="text" name="alcool_zi" class="form_control" />
-                </div>
-                <div class="flex">
-                </div>
             </div>
             <h2>Examen obiectiv</h2>
             <div class="col_sm_12 col_md_6">
@@ -668,6 +630,7 @@ error_reporting(0);
             </div>
             <div class="col_sm_12 col_md_6">
                 <h3>CONSULTURI SUPLIMENTARE:</h3>
+                <input type="text" name="statistica_consultari_suplimentare">
                 <div class="checkbox_holder" id="consultari_suplimentare"></div>
                 <select name="consultari_suplimentare[]" id="consultari_suplimentare" multiple="multiple">
                     <option value="fara_consulturi">fără alte consulturi</option>
@@ -684,8 +647,9 @@ error_reporting(0);
                 <input type="text" name="recomandari" class="form_control" />
             </div>
             <div class="col_sm_12">
+                <input type="text" name="statistica_diagnostice_vechi">
                 <label>DIAGNOSTICE VECHI:</label>
-                <select name="diagnostice_vechi[]" id="diagnostice_vechi" multiple="multiple" class="select2">
+                <select name="diagnostice_vechi[]" id="diagnostice_vechi" multiple="multiple" class="select2 important">
                         <optgroup label="IMC">
                             <option value="status_supraponderal">Status supraponderal</option>
                             <option value="obezitate_grad_1">Obezitate grad I</option>
@@ -737,7 +701,8 @@ error_reporting(0);
             </div>
             <div class="col_sm_12">
                 <label>DIAGNOSTICE NOI:</label>
-                <select name="diagnostice_noi[]" id="diagnostice_noi" multiple="multiple" class="select2">
+                <input type="text" name="statistica_diagnostice_noi">
+                <select name="diagnostice_noi[]" id="diagnostice_noi" multiple="multiple" class="select2 important">
                         <optgroup label="IMC">
                             <option value="status_supraponderal">Status supraponderal</option>
                             <option value="obezitate_grad_1">Obezitate grad I</option>
@@ -787,9 +752,18 @@ error_reporting(0);
                 </select>
                 <textarea type="text" placeholder="Altele" name="observatii_diagnostice_noi" class="form_control"></textarea>
             </div>
+            <div class="col_sm_12 col_md_6">
+                <h3>Bilant Clinic:</h3>
+                <select name="bilant_clinic" id="bilant_clinic" class="important">
+                    <option value="clinic_sanatos">Clinic Sanatos</option>
+                    <option value="recomandare_consult_MF">Recomandare consult MF</option>
+                    <option value="recomandare_consult_specialitate">Recomandare consult de specialitate</option>
+                    <option value="urgenta_medicala">Urgenta medicala</option>
+                </select>
+            </div>
             <div class="col_half">
                 <label>Fisa intocmita de</label>
-                <input type="text" name="doctor" class="form_control important" />
+                <input type="text" name="doctor" class="form_control" />
                 <input type="text" name="status" class="status hide" />
                 <input type="checkbox" name="status_check" id="status_check">
                 <label for="scales">Status pacient</label>

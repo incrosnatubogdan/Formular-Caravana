@@ -9,3 +9,4 @@ Link: https://github.com/incrosnatubogdan/Formular-Caravana/
 Selectezi folderul htdocs/formular_caravana (sau ce nume vrei tu) ca loc in care sa iti puna proiectul
 Current branch -> developer
 Dupa ce modifici ceva, iti apar modificarile si faci commit cu ele, as recomanda si un mesaj scurt care sa descrie ce reprezinta commit-ul
+Iar la final cand ai terminat apesi pe Push origin and you good
