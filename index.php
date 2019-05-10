@@ -274,7 +274,7 @@ error_reporting(1);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
     <meta name="HandheldFriendly" content="true">
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css?v2.1" />
     <link rel="stylesheet" href="assets/css/select2.css" />
 
     <script src="assets/js/jquery-3.3.1.min.js"></script>
@@ -640,16 +640,16 @@ error_reporting(1);
                     <option value="consult_dermatologie">consult dermatologie</option>
                     <option value="consult_oftalmologie">consult oftalmologie</option>
                 </select>
-                <label>Alte consulturi</label>
+                <h3>Alte consulturi</h3>
                 <input type="text" name="alte_consulturi" class="form_control" />
             </div>
             <div class="col_sm_12">
-                <label>Recomandari</label>
+                <h3>Recomandari</h3>
                 <input type="text" name="recomandari" class="form_control" />
             </div>
             <div class="col_sm_12">
                 <input type="text" name="statistica_diagnostice_vechi" class="hide">
-                <label>Diagnostice VECHI:</label>
+                <h3>Diagnostice VECHI:</h3>
                 <select name="diagnostice_vechi[]" id="diagnostice_vechi" multiple="multiple" class="select2 important">
                         <optgroup label="IMC">
                             <option value="status_supraponderal">Status supraponderal</option>
@@ -701,7 +701,7 @@ error_reporting(1);
                 <textarea type="text" placeholder="Altele" name="observatii_diagnostice_vechi" class="form_control"></textarea>
             </div>
             <div class="col_sm_12">
-                <label>Diagnostice NOI:</label>
+                <h3>Diagnostice NOI:</h3>
                 <input type="text" name="statistica_diagnostice_noi" class="hide">
                 <select name="diagnostice_noi[]" id="diagnostice_noi" multiple="multiple" class="select2 important">
                         <optgroup label="IMC">

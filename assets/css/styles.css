@@ -8,8 +8,7 @@ body {
 
 .text-success {
     position: fixed;
-    z-index: 1;
-    width: 21%;
+    z-index: 11;
     bottom: 40px;
     right: 30px;
     text-align: center;
@@ -192,7 +191,6 @@ input[type=checkbox] {
     margin: 5px 0;
     display: flex;
     align-items: center;
-    height: 25px;
     position: relative;
 }
 
@@ -207,6 +205,8 @@ input[type=checkbox] {
     position: relative;
     cursor: pointer;
     padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 .fake_box+label:before {
@@ -221,7 +221,7 @@ input[type=checkbox] {
 }
 
 .fake_box:hover+label:before {
-    background: #f35429;
+    background: black;
 }
 
 .fake_box:focus+label:before {
@@ -649,57 +649,55 @@ select.important,
     opacity: 0.6;
 }
 
-@media screen and (min-width: 726px) {
-    footer {
-        margin-top: 55px;
-        position: absolute;
-        z-index: 5;
-        background: white;
-        left: 0;
-        width: 100vw;
-    }
+footer {
+    margin-top: 55px;
+    position: absolute;
+    z-index: 5;
+    background: white;
+    left: 0;
+    width: 100vw;
+}
 
-    footer::before {
-        content: "";
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        top: -50px;
-        background: white;
-    }
+footer::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: -50px;
+    background: white;
+}
 
-    footer>img {
-        height: calc(100% + 50px);
-        position: absolute;
-        width: 102%;
-        top: -50px;
-        z-index: -1;
-        left: -1;
-        background-image: url(../footer.svg);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+footer>img {
+    height: calc(100% + 50px);
+    position: absolute;
+    width: 102%;
+    top: -50px;
+    z-index: -1;
+    left: -1;
+    background-image: url(../footer.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-    footer .quote {
-        text-align: center;
-        font-size: 15px;
-        font-weight: bold;
-        border-radius: 5px;
-        width: 80%;
-        margin: 0 auto;
-        display: block;
-        box-shadow: 0px 5px 17px rgba(190, 44, 18, 0.23);
-        padding: 5% 2%;
-        z-index: 3;
-        background: white;
-    }
+footer .quote {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0px 5px 17px rgba(190, 44, 18, 0.23);
+    padding: 5% 2%;
+    z-index: 3;
+    background: white;
+}
 
-    footer .copyright {
-        text-align: center;
-        font-size: 13px;
-        margin: 40px 0;
-        color: white;
-    }
+footer .copyright {
+    text-align: center;
+    font-size: 13px;
+    margin: 40px 0;
+    color: white;
 }
 
 .checkmark__circle {
