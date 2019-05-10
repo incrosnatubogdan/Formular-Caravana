@@ -212,16 +212,14 @@ input[type=checkbox] {
 .fake_box+label:before {
     content: '';
     margin-right: 10px;
-    display: inline-block;
-    vertical-align: text-top;
     width: 20px;
     height: 20px;
-    background: black;
+    background: #9a9595;
     flex: none;
 }
 
 .fake_box:hover+label:before {
-    background: black;
+    background: #9a9595;
 }
 
 .fake_box:focus+label:before {
@@ -246,13 +244,13 @@ input[type=checkbox] {
     content: '';
     position: absolute;
     left: 5px;
-    top: 9px;
     background: white;
     width: 2px;
     height: 2px;
     box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
+    top: 50%;
 }
 
 .checkbox_holder div.inutil.hta {

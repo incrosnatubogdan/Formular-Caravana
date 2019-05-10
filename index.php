@@ -274,7 +274,7 @@ error_reporting(1);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
     <meta name="HandheldFriendly" content="true">
-    <link rel="stylesheet" href="assets/css/styles.css?v2.1" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.2" />
     <link rel="stylesheet" href="assets/css/select2.css" />
 
     <script src="assets/js/jquery-3.3.1.min.js"></script>
