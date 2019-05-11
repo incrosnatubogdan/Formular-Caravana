@@ -494,14 +494,14 @@ error_reporting(1);
                     class="form_control"></textarea>
             </div>
             <div class="col_sm_12 col_md_6">
-                <h3>Sistem muscular si osteo_articular</h3>
+                <h3>Sistem muscular si osteo-articular</h3>
                 <div class="checkbox_holder" id="muscular_osteo_articular"></div>
                 <select name="muscular_osteo_articular[]" id="muscular_osteo_articular" multiple="multiple">
                     <option class="select_all" value="normal">NORMAL</option>
                     <option value="facies_normal">Facies normal sau necaracteristic.</option>
                     <option value="muscular_normotrof_normoton">Sistem muscular normotrof, normoton,
                         normokinetic.</option>
-                    <option value="osteo_articular_integru">Sistem osteo_articular integru morfofunctional</option>
+                    <option value="osteo_articular_integru">Sistem osteo-articular integru morfofunctional</option>
                 </select>
                 <textarea type="text" placeholder="Observații" name="observatii_muscular"
                     class="form_control"></textarea>
