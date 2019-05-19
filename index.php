@@ -262,7 +262,7 @@ error_reporting(1);
     file_put_contents($file, $current);
     if(file_put_contents("pdf/print.json", $final_data))  
     {  
-         $message = "<div class='text-success'><p>Fisierul este in curs de printare</p></div>";  
+        print_r("Ceva");  
     }
 }    
  ?>
@@ -285,6 +285,7 @@ error_reporting(1);
     <div class="login_popup">
         <input id="username" type="text" placeholder="Username" class="form-control" />
         <input id="parola" type="password" placeholder="password" class="form-control" />
+        <p class="hide" style="color:red">Datele introuse nu sunt corecte</p>
         <button class="signin_btn">Vezi formularul</button>
     </div>
     <iframe name="votar" style="display:none;"></iframe>
@@ -320,15 +321,15 @@ error_reporting(1);
                      ?>
             
             <div class="col_half">
-            <input name='grad_hta' class='hide' type='text'>
-            <input class='today hide' name="current_date" type='text'>
-            <input name='tip_dz' class='hide' type='text'>
-                <label>Nume</label>
-                <input id="name" type="text" name="name" class="form_control important" />
+                <input name='grad_hta' class='hide' type='text'>
+                <input class='today hide' name="current_date" type='text'>
+                <input name='tip_dz' class='hide' type='text'>
+                    <label>Nume</label>
+                    <input id="name" type="text" name="name" class="form_control important protected_data" />
             </div>
             <div class="col_half">
                 <label>Status asigurat</label>
-                <select name="asigurat" class="important">
+                <select name="asigurat" class="important protected_data">
                     <option value="frontdesk_uitat"></option>
                     <option value="Asigurat">Asigurat</option>
                     <option value="Neasigurat">Neasigurat</option>
@@ -336,53 +337,53 @@ error_reporting(1);
             </div>
             <div class="col_half">
                 <label>Varsta (ani)</label>
-                <input type="text" name="varsta" class="form_control important" />
+                <input type="text" name="varsta" class="form_control important protected_data" />
             </div>
             <div class="col_half">
                 <label>Data Nasterii</label>
-                <input type="text" name="datanasterii" class="form_control important" />
+                <input type="text" name="datanasterii" class="form_control important protected_data" />
             </div>
             <div class="col_half">
                 <label>Numar de telefon</label>
-                <input type="text" name="phone" class="form_control" />
+                <input type="text" name="phone" class="form_control protected_data" />
             </div>
             <div class="col_half">
                 <label>Localitate</label>
-                <input type="text" name="Localitate" class="form_control" />
+                <input type="text" name="Localitate" class="form_control protected_data" />
             </div>
             <div class="col_half">
                 <label>Judet</label>
-                <input type="text" name="Judet" class="form_control" />
+                <input type="text" name="Judet" class="form_control protected_data" />
             </div>
             <h2>Masuratori</h2>
-            <div class="col_half">
+            <div class="col_half half">
                 <label>Talie (cm)</label>
                 <input type="text" name="Talie" class="form_control important" />
             </div>
-            <div class="col_half">
+            <div class="col_half half">
                 <label>Greutate (kg)</label>
                 <input type="text" name="Greutate" class="form_control important" />
             </div>
-            <div class="col_half">
+            <div class="col_half half">
                 <label>Circumferința abdominală (cm)</label>
                 <input type="text" name="Circumferinta_abdominala" class="form_control" />
             </div>
-            <div class="col_half">
+            <div class="col_half half">
                 <label>Circumferința șoldurilor (cm)</label>
                 <input type="text" name="Circumferinta_soldurilor" class="form_control" />
             </div>
             <div class="col_half">
-                <label>Tensiunea arteriala în ortostatism (mmHg)</label>
+                <label>Tensiunea arteriala sistolica (mmHg)</label>
                 <input type="text" name="Tensiunea_arteriala_ortostatism" class="form_control important" />
             </div>
             <div class="col_half">
-                <label>Tensiunea arteriala în clinostatism (mmHg)</label>
+                <label>Tensiunea arteriala diastolica (mmHg)</label>
                 <input type="text" name="Tensiunea_arteriala_clinostatism" class="form_control important" />
             </div>
             <h2>Anamneza</h2>
             <div class="col_half">
                 <label>Acuze</label>
-                <input type="text" name="acuze" class="form_control" />
+                <textarea type="text" name="acuze" class="form_control"></textarea>
             </div>
             <div class="col_half">
                 <label>Antecedente heredo-colaterale</label>
@@ -419,14 +420,18 @@ error_reporting(1);
             </div>
             <div class="col_half">
                 <label>Medicația curentă</label>
-                <input type="text" name="medicatia_curenta" class="form_control" />
+                <textarea type="text" name="medicatia_curenta" class="form_control"></textarea>
             </div>
             <h2>Condiții de viață și de muncă și comportamente</h2>
-            <div class="col_half">
+            <div class="col_half col_third">
                 <label>Loc de munca(toxic/nontoxic)</label>
-                <input type="text" name="loc_munca" class="form_control" />
+                <select name="loc_munca">
+                    <option value="frontdesk_uitat"></option>
+                    <option value="Toxic">Toxic</option>
+                    <option value="Non_Toxic">Non-Toxic</option>
+                </select>
             </div>
-            <div class="col_half">
+            <div class="col_half col_third">
                 <label>Fumător:</label>
                 <select name="fumator" class="important">
                     <option value="frontdesk_uitat"></option>
@@ -435,20 +440,23 @@ error_reporting(1);
                     <option value="Nu">Nu</option>
                 </select>
             </div>
-            <div class="col_half">
+            <div class="col_half hide_alcohol smoker">
                 <label>PA (pachete an)</label>
                 <input type="text" name="pachete_an" class="form_control important" />
             </div>
-            <div class="col_half">
+            <div class="col_half hide_alcohol smoker">
                 <label>Ani de cand nu mai fumeaza</label>
                 <input type="text" name="an_nefumator" class="form_control important" />
             </div>
-            <div class="col_half">
-                    <label>Porții de alcool (completati)</label><br>
-                    <input type="radio" name="alcool" value="Da">Da<br>
-                    <input type="radio" name="alcool" value="Nu">Nu<br>
+            <div class="col_half col_third">
+                    <label>Consuma Alcool</label>
+                    <select name="alcool">
+                        <option value="frontdesk_uitat"></option>
+                        <option value="Da">Da</option>
+                        <option value="Nu">Nu</option>
+                    </select>
                 </div>
-                <div class="col_half">
+                <div class="col_half alcohol_info hide_alcohol">
                     <label>Daca da: ml de(tip alcool):</label>
                     <input type="text" name="ml_alcool" class="form_control" />
                     <label>de ori/(zi, sapt)</label>
@@ -641,11 +649,11 @@ error_reporting(1);
                     <option value="consult_oftalmologie">consult oftalmologie</option>
                 </select>
                 <h3>Alte consulturi</h3>
-                <input type="text" name="alte_consulturi" class="form_control" />
+                <textarea type="text" name="alte_consulturi" class="form_control"></textarea>
             </div>
             <div class="col_sm_12">
                 <h3>Recomandari</h3>
-                <input type="text" name="recomandari" class="form_control" />
+                <textarea type="text" name="recomandari" class="form_control"></textarea>
             </div>
             <div class="col_sm_12">
                 <input type="text" name="statistica_diagnostice_vechi" class="hide">
@@ -768,7 +776,7 @@ error_reporting(1);
                 <input type="text" name="status" class="status hide" />
                 <div class="check_holder">
                     <input type="checkbox" name="status_check" class="fake_box" id="status_check">
-                    <label for="scales">Status pacient</label>
+                    <label for="scales">Pacient Consultat</label>
                 </div>
             </div>
             <input type="submit" name="submit" class="btn btn-info submit-button" />

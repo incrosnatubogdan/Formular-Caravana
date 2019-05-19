@@ -40,6 +40,23 @@ function addCheckbox() {
     jQuery("body").addClass("loaded_check");
 }
 
+function checkImportantData() {
+    if($('.protected_data').val().length) {
+        var elemenets = $(".protected_data");
+        for (i=0; i<elemenets.length; i++) {
+            if($(elemenets[i]).val().length) {
+                elemenets[i].disabled='true';
+                $(elemenets[i]).addClass("blocked");
+            }
+        }
+    }
+}
+
+function editPopup() {
+    var popup = '<div class="overlay accept_edit"><div class="popup"><p>Esti sigur ca doresti sa editezi aceste date?</p><div class="button_holder"><button class="nu">Nu</button><button class="da">Da</butto></div></div></div>';
+    $("body").append(popup);
+}
+
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -65,7 +82,7 @@ $(document).ready(function () {
     $('.select2').select2();
     $(".analize-table").clone().prependTo(".table");
     $(".today").val(today);
-    $('.patient, .last_patient').on('click', function () {
+    jQuery(document).on("click", '.patient, .last-patient', function (event) {
         if ($(this).hasClass("seen")) {
             var name = dir + seen + $(this).text() + '.json';
         } else {
@@ -90,10 +107,11 @@ $(document).ready(function () {
         });
         setTimeout(function () {
             addCheckbox();
+            checkImportantData();
         }, 100);
     });
 
-    $('input.select_all').on('click', function () {
+    jQuery(document).on("click", 'input.select_all', function (event) {
         var parentID = $(this).parent().parent().attr("id");
         var checkStatus = $(this).is(":checked");
         if (checkStatus == true) {
@@ -111,7 +129,7 @@ $(document).ready(function () {
         $("input[name=" + currentID + "]").val(inputValue);
     })
 
-    $(".fake_box").on('click', function () {
+    jQuery(document).on("click", '.fake_box', function (event) {
         var parentID = $(this).parent().parent().attr("id");
         var value = $(this).val();
         var checkStatus = $(this).is(":checked");
@@ -153,7 +171,7 @@ $(document).ready(function () {
         
     });
 
-    $(".text-success").on('click', function () {
+    jQuery(document).on("click", '.text-success', function (event) {
         $(".text-success").hide();
     });
 
@@ -170,24 +188,79 @@ $(document).ready(function () {
         
     });
 
-    $(".close").on('click', function () {
+    jQuery(document).on("click", '.close', function (event) {
         $('.overlay').hide();
         $("body").css("height", "auto");
     });
 
-    $(".pacient_nou").on('click', function () {
+    jQuery(document).on("click", '.pacient_nou', function (event) {
         location.reload();
     });
 
-    $(".signin_btn").on('click', function (event) {
-        var usernameList = ["caravana_iasi","caravana_bucuresti","caravana_cluj"];
-        var univpass = "carav";
+    jQuery(document).on("click", '.signin_btn', function (event) {
+        var usernameList = ["medicb","medici","medicc"];
+        var univpass = "kar@vana283";
         var username = $("#username").val();
-        var pass = $("#parola").val();
+        var pass = $("#parola").val().toLowerCase();
         
         if ($.inArray(username, usernameList) != -1 && pass == univpass) {
             $(".login_popup").hide();
             document.cookie = "logged=true";
+        } else {
+            $(".login_popup p").removeClass("hide");
+        }
+    });
+
+    jQuery(document).on("click", '.col_half', function (event) {
+        if($(this).find(".protected_data.blocked").length) {
+            editPopup();
+        }
+    });
+
+    jQuery(document).on("click", '.accept_edit .button_holder button', function (event) {
+        var currentAction = $(this).attr("class");
+        $(".overlay.accept_edit").remove();
+        if (currentAction == "da") {
+            var elemenets = $(".protected_data");
+            for (i=0; i<elemenets.length; i++){
+                elemenets.removeAttr("disabled");
+            }
+        }
+    });  
+
+    $("select[name=alcool]").on('click', function (event) {
+        var value = $(this).val();
+        if (value == "Da") {
+            $(".alcohol_info").removeClass("hide_alcohol");
+        } else {
+            $(".alcohol_info").addClass("hide_alcohol");
+        }
+    });
+
+    jQuery(document).on("click", '#consultari_suplimentare input', function (event) {
+        var value = $(this).val();
+        var elemenets = $("#consultari_suplimentare input");
+        if (value == "fara_consulturi" && $(this).is(':checked')) {
+            $(this).addClass("all_select");
+            elemenets.prop("checked", false);
+            $(".all_select").prop("checked", true);
+            for (i=0; i<elemenets.length; i++) {
+                elemenets[i].disabled='true';
+            }
+            $(".all_select").removeAttr("disabled");
+        } else {
+            for (i=0; i<elemenets.length; i++){
+                elemenets.removeAttr("disabled");
+            }
+        }
+    });
+
+    jQuery(document).on("click", 'select[name=fumator]', function (event) {
+        var value = $(this).val();
+        if (value == "Da_prezent" || value == "Da_trecut") {
+            $(".smoker").removeClass("hide_alcohol");
+        } else {
+            $(".smoker").addClass("hide_alcohol");
         }
     });
 
@@ -198,14 +271,14 @@ $(document).ready(function () {
             $('.status').val("");
         }
     });
-
-    $(".analize").on('click', function () {
+    
+    jQuery(document).on("click", '.analize', function (event) {
         $('.overlay').show();
         $("body").css("overflowY", "hidden");
         $("body").css("height", "0vh");
     });
 
-    $(".make_pdf").on('click', function () {
+    jQuery(document).on("click", '.make_pdf', function (event) {
         setTimeout(function (event) {
             window.open('pdf/make_pdf.php', '_blank');
         }, 1000);
