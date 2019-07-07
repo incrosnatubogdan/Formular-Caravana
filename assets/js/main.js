@@ -53,7 +53,13 @@ function checkImportantData() {
 }
 
 function editPopup() {
-    var popup = '<div class="overlay accept_edit"><div class="popup"><p>Esti sigur ca doresti sa editezi aceste date?</p><div class="button_holder"><button class="nu">Nu</button><button class="da">Da</butto></div></div></div>';
+    var popup = '<div class="overlay accept_edit"><div class="popup"><p>Esti sigur ca doresti sa editezi aceste date?</p><div class="button_holder edit_btn"><button class="nu">Nu</button><button class="da">Da</butto></div></div></div>';
+    $("body").append(popup);
+}
+
+
+function positionPopup() {
+    var popup = '<div class="overlay accept_edit"><div class="popup"><p>Pozitia este cea de frontdesk</p><div class="button_holder confirm_pos"><button class="nu">Nu</button><button class="da">Da</butto></div></div></div>';
     $("body").append(popup);
 }
 
@@ -197,6 +203,10 @@ $(document).ready(function () {
         location.reload();
     });
 
+    jQuery(document).on("click", '.pozitie', function (event) {
+        positionPopup();
+    });
+
     jQuery(document).on("click", '.signin_btn', function (event) {
         var usernameList = ["medicb","medici","medicc"];
         var univpass = "kar@vana283";
@@ -209,22 +219,59 @@ $(document).ready(function () {
         } else {
             $(".login_popup p").removeClass("hide");
         }
+
+        if(username == "medicb") {
+            window.location.replace("https://caravanacumedici.ro/form_bucuresti/index.php");
+        } else if (username == "medicc") {
+            window.location.replace("https://caravanacumedici.ro/form_cj/index.php");
+        } else if (username == "medici") {
+            window.location.replace("https://caravanacumedici.ro/form_iasi/index.php");
+        }
     });
 
-    jQuery(document).on("click", '.col_half', function (event) {
-        if($(this).find(".protected_data.blocked").length) {
+    jQuery(document).on("click", '.confirm_pos button.da', function (event) {
+        document.cookie = "frontdesk=true";
+        $(".accept_edit").hide();
+    });
+
+    jQuery(document).on("click", '.confirm_pos button.nu', function (event) {
+        document.cookie = "frontdesk=false";
+        $(".accept_edit").hide();
+    });
+    
+    var userPosition = getCookie("frontdesk");
+    if (userPosition == "true") {
+        $(".accept_edit").hide();
+        $('.protected_data').each(function () {
+            jQuery(this).prop('disabled', false);
+            $(this).addClass("editing")
+        });
+    } else if (userPosition == "false"){
+        $('.overlay').show();
+        $("body").css("overflowY", "hidden");
+        $("body").css("height", "0vh");
+        
+        // $('.protected_data').each(function () {
+        //     jQuery(this).prop('disabled', true);
+        // });
+    } else {
+        positionPopup();
+    }
+
+    jQuery(document).on("click", 'input', function (event) {
+        if($(this).hasClass("protected_data") && !$(this).hasClass("editing")) {
             editPopup();
         }
     });
 
-    jQuery(document).on("click", '.accept_edit .button_holder button', function (event) {
+    jQuery(document).on("click", '.accept_edit .edit_btn button', function (event) {
         var currentAction = $(this).attr("class");
         $(".overlay.accept_edit").remove();
         if (currentAction == "da") {
-            var elemenets = $(".protected_data");
-            for (i=0; i<elemenets.length; i++){
-                elemenets.removeAttr("disabled");
-            }
+            $('.protected_data').each(function () {
+                jQuery(this).prop('disabled', false);
+                $(this).addClass("editing")
+            });
         }
     });  
 

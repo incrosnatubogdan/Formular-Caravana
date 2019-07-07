@@ -84,6 +84,10 @@ button.top_bar.analize {
     left: 150px;
 }
 
+button.top_bar.pozitie {
+    right: 15px;
+}
+
 .submit-button {
     max-width: 200px;
     margin: 0 auto;

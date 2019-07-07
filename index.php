@@ -292,6 +292,7 @@ error_reporting(1);
     <div class="menu-bar">
         <button class="top_bar pacient_nou"><img src="assets/add.png">Pacient Nou</button>
         <button class="top_bar analize"><img src="assets/search.png">Vezi toti pacientii</button>
+        <button class="top_bar pozitie"><img src="assets/search.png">Schimba-ti pozitia</button>
     </div>
     <div id="toate-analizele" class="overlay">
         <div class="popup">
