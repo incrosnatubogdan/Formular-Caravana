@@ -257,13 +257,18 @@ $(document).ready(function () {
             jQuery(document).on("click", '.confirm_pos button.da', function (event) {
                 document.cookie = "frontdesk=true";
                 $(".accept_edit").hide();
-                location.reload();
+                $('.protected_data').each(function () {
+                    jQuery(this).prop('disabled', false);
+                    $(this).addClass("editing")
+                });
             });
 
             jQuery(document).on("click", '.confirm_pos button.nu', function (event) {
                 document.cookie = "frontdesk=false";
-                location.reload();
                 $(".accept_edit").hide();
+                $('.protected_data').each(function () {
+                    $(this).removeClass("editing")
+                });
             });
 
             var userPosition = getCookie("frontdesk");
