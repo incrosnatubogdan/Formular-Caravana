@@ -110,9 +110,11 @@ error_reporting(1);
                          $new_array[$i][0] .  
                          "</p>"; 
      }else{ 
-         $line = "<p class='patient'>" .  
-                         $new_array[$i][0] .  
-                         "</p>"; 
+         $line = "<div class='list'><p class='patient'>".
+                         $new_array[$i][0].
+                         "</p><a class='edit'>Editeaza</a><a id='".  
+                         $new_array[$i][0].
+                         "' class='delete'>Sterge</a></div>"; 
      } 
      echo $line; 
  } 
@@ -257,10 +259,11 @@ error_reporting(1);
          'obs_diagnoi' => $_POST['observatii_diagnostice_noi'],
          'recomandari' => $_POST['recomandari']
     );  
-    $array_data = $extra;  
+    $array_data = $extra;
     $final_data = json_encode($array_data);
-    file_put_contents($file, $current);
-    if(file_put_contents("pdf/print.json", $final_data))  
+    $printfile = "pdf/print.json";
+    file_put_contents($printfile, $final_data);
+    if(file_put_contents($printfile, $final_data))  
     {  
         print_r("Ceva");  
     }
@@ -292,12 +295,12 @@ error_reporting(1);
     <div class="menu-bar">
         <button class="top_bar pacient_nou"><img src="assets/add.png">Pacient Nou</button>
         <button class="top_bar analize"><img src="assets/search.png">Vezi toti pacientii</button>
-        <button class="top_bar pozitie"><img src="assets/search.png">Schimba-ti pozitia</button>
+        <button class="top_bar pozitie">Schimba-ti pozitia</button>
     </div>
     <div id="toate-analizele" class="overlay">
         <div class="popup">
             <a class="close close-joker">X</a>
-            <input type="text" id="search_patient" placeholder="Search for names..">
+            <input type="text" id="search_patient" placeholder="Cauta pacient">
             <h2>Pacientii din caravana:</h2>
             <div class="table">
                 <h2>Ultimul tau pacient adaugat:</h2>
@@ -325,7 +328,7 @@ error_reporting(1);
                 <input name='grad_hta' class='hide' type='text'>
                 <input class='today hide' name="current_date" type='text'>
                 <input name='tip_dz' class='hide' type='text'>
-                    <label>Nume</label>
+                    <label>Nume si Prenume</label>
                     <input id="name" type="text" name="name" class="form_control important protected_data" />
             </div>
             <div class="col_half">

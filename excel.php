@@ -1,5 +1,5 @@
 <?php
-$files = glob("./carav_1/output/*.json");
+$files = glob("./carav_1/*.json");
 
 $newDataArray = [];
 

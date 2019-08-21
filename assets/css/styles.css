@@ -1,9 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 html,
 body {
     -webkit-text-size-adjust: none;
     touch-action: manipulation;
     background: white;
     overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+button,
+input,
+textarea {
+    font-family: 'Poppins', sans-serif;
 }
 
 .text-success {
@@ -25,6 +39,25 @@ body {
 
 .container {
     margin-top: 5%;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+}
+
+.list > a {
+    padding: 0 10px;
+}
+
+.list > a.delete {
+    color: #f73232;
+}
+
+.list > a.edit {
+    position: inherit;
+    color: #459e49;
+    height: inherit;
 }
 
 select {
@@ -143,11 +176,15 @@ button.top_bar.pozitie {
     background: #25A8E0;
     border: none;
     padding: 0 60px;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px;
+    border: 2px solid grey;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
 }
 
 .overlay.accept_edit .popup button.nu {
-    background: #F05A29;
+    background: #fff;
+    color: grey;
 }
 
 select[multiple],
@@ -200,6 +237,24 @@ input[type=radio] {
 .col_sm_12.col_md_6 textarea:before {
     content: 'Observatii';
 
+}
+
+@media only screen and (max-device-width: 450px) {
+    .overlay.accept_edit .popup {
+        margin: 10% 4vw;
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-device-width: 650px) {
+    button.top_bar.pozitie {
+        left: 0;
+        bottom: 0;
+        top: auto;
+        color: black;
+        background: white;
+        font-weight: bold;
+    }
 }
 
 input[type='radio']:after {
@@ -354,10 +409,11 @@ input[type=checkbox] {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     border-radius: 5px;
     width: 80vw;
-    height: 60vh;
+    height: 80vh;
     position: relative;
     overflow-y: scroll;
-    background: linear-gradient(to right, #25c481, #25b7c4);
+    background: -webkit-linear-gradient (to top, #cfd9df 0%, #e2ebf0 100%);
+    background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 
 .popup .close {
@@ -393,6 +449,10 @@ input[type=checkbox] {
 
 .analize-table p.patient.seen {
     color: #459e49;
+}
+
+.analize-table .list:first-child {
+    display: none;
 }
 
 div.col-md-6 select,

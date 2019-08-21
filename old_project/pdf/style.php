@@ -1,0 +1,49 @@
+<?php
+    header("Content-type: text/css; charset: UTF-8");
+?>
+
+* {
+    font-family: Dejavu Sans, sans-serif;
+}
+table {
+    border: 2px solid #ed1c40;
+    border-radius: .25rem;
+    min-width: 100vw;
+}
+th {
+    background: #ed1c40;
+    color: white;
+}
+th,
+td {
+    margin: 2px 4px;
+    text-align: center;
+}
+tr {
+    min-width: 100vw;
+}
+h1 {
+    text-align: center;
+}
+img.logo {
+    position: absolute;
+    top: -20px;
+    right: 140px;
+}
+.flex {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+.flex .date {
+    width: 44%;
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+}
+.flex .signature {
+    width: 44%;
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+}

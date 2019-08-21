@@ -1,0 +1,12 @@
+3 fisiere principale - assets/css/styles.css; index.php si daca te simti curajos si nu iti place pagina de print(pdf/make_pdf.php)
+In styles, jos de tot ai o zona comentata /* Laurentiu styles */  scrie tot ce ai acolo
+Rezolutie tableta: ,
+Browser: Chrome,
+Pentru github poti sa faci totul din linie de comanda (buuuuu boring), sau poti sa iei asta https://desktop.github.com/.
+Accepti invitatia de la mine pentru github
+Te duci pe Add -> Clone repo
+Link: https://github.com/incrosnatubogdan/Formular-Caravana/
+Selectezi folderul htdocs/formular_caravana (sau ce nume vrei tu) ca loc in care sa iti puna proiectul
+Current branch -> developer
+Dupa ce modifici ceva, iti apar modificarile si faci commit cu ele, as recomanda si un mesaj scurt care sa descrie ce reprezinta commit-ul
+Iar la final cand ai terminat apesi pe Push origin and you good

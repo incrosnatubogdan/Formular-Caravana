@@ -14,13 +14,24 @@ $page = file_get_contents("print.json");
 $character = json_decode($page);
 $array = json_decode($page,true);
 
-$diagvechi = "diagvechi";
-$diagvechi = implode("<br>",$array[$diagvechi]);
-$diagvechi = str_replace('_', ' ', $diagvechi);
 
 $diagnoi = "diagnoi";
-$diagnoi = implode("<br>",$array[$diagnoi]);
-$diagnoi = str_replace('_', ' ', $diagnoi);
+if ($array[$diagnoi] === NULL) {
+    $diagnoi = "";
+} else {
+    $diagnoi = implode("<br>",$array[$diagnoi]);
+    $diagnoi = str_replace('_', ' ', $diagnoi);
+}
+
+$diagvechi = "diagvechi";
+if ($array[$diagvechi] === NULL) {
+    $diagvechi = "";
+} else {
+    $diagvechi = implode("<br>",$array[$diagvechi]);
+    $diagvechi = str_replace('_', ' ', $diagvechi);
+}
+
+
 $html = <<<STY
 <!DOCTYPE html>
 <html lang="ro">

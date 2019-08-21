@@ -1,0 +1,9 @@
+-button cancel editeaza + creeaza rol
+
+Vizualizează programări
+Adaugă programări
+Editează programări
+NIR -> Vizualizează
+	-> Adaugă
+	-> Editează
+	-> 
