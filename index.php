@@ -160,6 +160,7 @@ error_reporting(1);
                      'tip_dz' => $_POST['tip_dz'],
                      'grad_hta' => $_POST['grad_hta'],
                      'antecedente_personale_patologice' => $_POST['antecedente_personale_patologice'],
+                     'medicatia_curenta' => $_POST['medicatia_curenta'],
                      'loc_munca' => $_POST['loc_munca'],
                      'fumator' => $_POST['fumator'],
                      'pachete_an' => $_POST['pachete_an'],
