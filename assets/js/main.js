@@ -307,14 +307,7 @@ $(document).ready(function () {
                 }
             });
 
-            $("select[name=alcool]").on('touchend', function (event) {
-                var value = $(this).val();
-                if (value == "Da") {
-                    $(".alcohol_info").removeClass("hide_alcohol");
-                } else {
-                    $(".alcohol_info").addClass("hide_alcohol");
-                }
-            });
+            
 
             jQuery(document).on("click", '#consultari_suplimentare input', function (event) {
                 var value = $(this).val();
@@ -334,12 +327,22 @@ $(document).ready(function () {
                 }
             });
 
-            jQuery(document).on("touchend", 'select[name=fumator]', function (event) {
+            $('select[name=fumator]').on('change', function () {
+            // jQuery(document).on("click", 'select[name=fumator]', function (event) {
                 var value = $(this).val();
                 if (value == "Da_prezent" || value == "Da_trecut") {
                     $(".smoker").removeClass("hide_alcohol");
                 } else {
                     $(".smoker").addClass("hide_alcohol");
+                }
+            });
+
+            $("select[name=alcool]").on('change', function (event) {
+                var value = $(this).val();
+                if (value == "Da") {
+                    $(".alcohol_info").removeClass("hide_alcohol");
+                } else {
+                    $(".alcohol_info").addClass("hide_alcohol");
                 }
             });
 

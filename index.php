@@ -329,7 +329,7 @@ error_reporting(1);
                 <input name='grad_hta' class='hide' type='text'>
                 <input class='today hide' name="current_date" type='text'>
                 <input name='tip_dz' class='hide' type='text'>
-                    <label>Nume si Prenume</label>
+                    <label>Nume și prenume</label>
                     <input id="name" type="text" name="name" class="form_control important protected_data" />
             </div>
             <div class="col_half">
@@ -341,15 +341,15 @@ error_reporting(1);
                 </select>
             </div>
             <div class="col_half">
-                <label>Varsta (ani)</label>
+                <label>Vârstă (ani)</label>
                 <input type="text" name="varsta" class="form_control important protected_data" />
             </div>
             <div class="col_half">
-                <label>Data Nasterii</label>
+                <label>Data nașterii</label>
                 <input type="text" name="datanasterii" class="form_control important protected_data" placeholder="ZZ.LL.AAAA" />
             </div>
             <div class="col_half">
-                <label>Numar de telefon</label>
+                <label>Număr de telefon</label>
                 <input type="text" name="phone" class="form_control protected_data" />
             </div>
             <div class="col_half">
@@ -357,10 +357,10 @@ error_reporting(1);
                 <input type="text" name="Localitate" class="form_control protected_data" />
             </div>
             <div class="col_half">
-                <label>Judet</label>
+                <label>Județ</label>
                 <input type="text" name="Judet" class="form_control protected_data" />
             </div>
-            <h2>Masuratori</h2>
+            <h2>Măsurători</h2>
             <div class="col_half half">
                 <label>Talie (cm)</label>
                 <input type="text" name="Talie" class="form_control important" />
@@ -385,7 +385,7 @@ error_reporting(1);
                 <label>Tensiunea arteriala diastolica (mmHg)</label>
                 <input type="text" name="Tensiunea_arteriala_clinostatism" class="form_control important" />
             </div>
-            <h2>Anamneza</h2>
+            <h2>Anamneză</h2>
             <div class="col_half">
                 <label>Acuze</label>
                 <textarea type="text" name="acuze" class="form_control"></textarea>
@@ -397,7 +397,7 @@ error_reporting(1);
             <div class="col_half">
                 <label>Antecedente personale fiziologice</label>
                 <div class="flex no_left">
-                    <label>Nasteri</label>
+                    <label>Nașteri</label>
                     <input type="text" name="numar_nasteri" class="form_control">
                     <label>Sarcini</label>
                     <input type="text" name="numar_sarcini" class="form_control">
@@ -450,11 +450,11 @@ error_reporting(1);
                 <input type="text" name="pachete_an" class="form_control important" />
             </div>
             <div class="col_half hide_alcohol smoker">
-                <label>Ani de cand nu mai fumeaza</label>
+                <label>Ani de când nu mai fumează</label>
                 <input type="text" name="an_nefumator" class="form_control important" />
             </div>
             <div class="col_half col_third">
-                    <label>Consuma Alcool</label>
+                    <label>Consuma alcool</label>
                     <select name="alcool">
                         <option value="frontdesk_uitat"></option>
                         <option value="Da">Da</option>
@@ -469,7 +469,7 @@ error_reporting(1);
             </div>
             <h2>Examen obiectiv</h2>
             <div class="col_sm_12 col_md_6">
-                <h3>Tegumente, mucoase si fanere</h3>
+                <h3>Tegumente, mucoase și fanere</h3>
                 <div class="checkbox_holder" id="tegumente_mucoase_fanere"></div>
                 <select name="tegumente_mucoase_fanere[]" id="tegumente_mucoase_fanere" multiple="multiple">
                     <option class="select_all" name="normal" value="normale">NORMALE</option>
@@ -490,7 +490,7 @@ error_reporting(1);
                 <div class="checkbox_holder" id="tesut_conjuctiv_adipos"></div>
                 <select name="tesut_conjuctiv_adipos[]" id="tesut_conjuctiv_adipos" multiple="multiple">
                     <option class="select_all" value="normal_reprezentat">NORMAL REPREZENTAT</option>
-                    <option value="exces">În exces (adipozitate androidă/ ginoidă)</option>
+                    <option value="exces">În exces (adipozitate androidă/ginoidă)</option>
                     <option value="slab_reprezentat">Slab reprezentat</option>
                 </select>
                 <textarea type="text" placeholder="Observații" name="observatii_tesut" class="form_control">
@@ -544,7 +544,7 @@ error_reporting(1);
                     <option value="zgomote_cardiace_echipotente">Zgomote cardiace echipotente și echidistante, fără
                         zgomote supraadaugate</option>
                     <option value="pulsuri_periferice_palpabile">Pulsuri periferice palpabile egal bilateral. Fără
-                        edeme, Jugulare neturgescente. Fără vene varicoase</option>
+                        edeme, jugulare neturgescente. Fără vene varicoase</option>
                 </select>
                 <textarea type="text" placeholder="Observații" name="observatii_cardiovascular"
                     class="form_control"></textarea>
@@ -605,13 +605,12 @@ error_reporting(1);
                 <div class="checkbox_holder" id="sistem_nervos"></div>
                 <select name="sistem_nervos[]" id="sistem_nervos" multiple="multiple">
                     <option class="select_all" value="normal">NORMAL</option>
-                    <option value="pacient_constient_cooperant">Pacient conștient, cooperant, orientat temporo_
-                        spațial.</option>
-                    <option value="nervii_cranieni_intacti">Nervii cranieni II _ XII intacți, ROT normale și egale
-                        bilateral</option>
+                    <option value="pacient_constient_cooperant">Pacient conștient, cooperant, orientat temporo-spațial.</option>
+                    <option value="nervii_cranieni_intacti">Nervii cranieni II-XII intacți, ROT normale și egale
+                        bilateral.</option>
                     <option value="fara_semne_neurologice_focar">Fără semne neurologice de focar, fără redoare de
                         ceafă.</option>
-                    <option value="fara_tulburari_psihice">Fără tulburari psihice</option>
+                    <option value="fara_tulburari_psihice">Fără tulburari psihice.</option>
                 </select>
                 <textarea type="text" placeholder="Observații" name="observatii_sistem_nervos"
                     class="form_control"></textarea>
@@ -621,11 +620,11 @@ error_reporting(1);
                 <div class="checkbox_holder" id="organe_de_simt"></div>
                 <select name="organe_de_simt[]" id="organe_de_simt" multiple="multiple">
                     <option class="select_all" value="normal">Normal</option>
-                    <option value="acuitate_vizuala_normala">Acuitate vizuală normala</option>
-                    <option value="acuitate_auditiva_normala">Acuitate auditivă pastrată</option>
+                    <option value="acuitate_vizuala_normala">Acuitate vizuală normală.</option>
+                    <option value="acuitate_auditiva_normala">Acuitate auditivă pastrată.</option>
                     <option value="fara_tulburari_senzitive_cutanate">Fără tulburari senzitive cutanate, de gust
                         sau de
-                        miros</option>
+                        miros.</option>
                 </select>
                 <textarea type="text" placeholder="Observații" name="observatii_organe_de_simt"
                     class="form_control"></textarea>
@@ -634,22 +633,22 @@ error_reporting(1);
                 <h3>Tiroida</h3>
                 <div class="checkbox_holder" id="tiroida"></div>
                 <select name="tiroida[]" id="tiroida" multiple="multiple">
-                    <option value="tiroida_palpabila">Tiroida palpabilă pe linia mediană a gâtului, cu
+                    <option value="tiroida_palpabila">Tiroida palpabilă pe linia mediană a gâtului.
                         </option>
                     <option value="consistenta_elastica">Consistență elastică și omogenă, de dimensiuni
-                        normale, nedureroasă</option>
+                        normale, nedureroasă.</option>
                 </select>
                 <textarea type="text" placeholder="Observații" name="observatii_tiroida"
                     class="form_control"></textarea>
             </div>
             <div class="col_sm_12 col_md_6">
-                <h3>Consulturi suuplimentare:</h3>
+                <h3>Consulturi suplimentare:</h3>
                 <input type="text" name="statistica_consultari_suplimentare" class="hide">
                 <div class="checkbox_holder" id="consultari_suplimentare"></div>
                 <select name="consultari_suplimentare[]" id="consultari_suplimentare" multiple="multiple">
                     <option value="fara_consulturi">fără alte consulturi</option>
                     <option value="ecografie_abdominala">ecografie abdominală</option>
-                    <option value="consult_medicina_interna">consult medicină internă / cardiologie</option>
+                    <option value="consult_medicina_interna">consult medicină internă/cardiologie</option>
                     <option value="consult_dermatologie">consult dermatologie</option>
                     <option value="consult_oftalmologie">consult oftalmologie</option>
                 </select>
@@ -767,18 +766,18 @@ error_reporting(1);
                 <textarea type="text" placeholder="Altele" name="observatii_diagnostice_noi" class="form_control"></textarea>
             </div>
             <div class="col_sm_12 col_md_6">
-                <h3>Bilant Clinic:</h3>
+                <h3>Bilant clinic:</h3>
                 <select name="bilant_clinic" id="bilant_clinic" class="important">
-                    <option value="clinic_sanatos">Clinic Sanatos</option>
+                    <option value="clinic_sanatos">Clinic sănătos</option>
                     <option value="recomandare_consult_MF">Recomandare consult MF</option>
                     <option value="recomandare_consult_specialitate">Recomandare consult de specialitate</option>
-                    <option value="urgenta_medicala">Urgenta medicala</option>
+                    <option value="urgenta_medicala">Urgență medicală</option>
                 </select>
             </div>
             <div class="col_half">
-                <label>Fisa intocmita de</label>
+                <label>Fișă întocmită de</label>
                 <input type="text" name="doctor" class="form_control" />
-                <input type="text" name="status" class="status hide" />
+                <input type="text" name="status" class="status" />
                 <div class="check_holder">
                     <input type="checkbox" name="status_check" class="fake_box" id="status_check">
                     <label for="scales">Pacient Consultat</label>
