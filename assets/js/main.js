@@ -404,9 +404,10 @@ $(document).ready(function () {
                     $(".text-success").css("display", "flex");
                     setTimeout(function () {
                         $(".text-success").hide();
+                        $('#medical_form').trigger("reset");
                     }, 5000);
                     var lastPatient = $('input[name=name]').val();
-                    $('#medical_form').trigger("reset");  
+                    
                     $('.last_patient').text(lastPatient);
                     $(".stat_btn").trigger("click");
                 });

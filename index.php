@@ -368,10 +368,6 @@ error_reporting(1);
                 <label>Județ</label>
                 <input type="text" name="Judet" class="form_control protected_data" />
             </div>
-            <div class="col_half">
-                <input type="submit" name="submit" class="btn btn-info submit-button" />
-            </div>
-            
             <h2>Măsurători</h2>
             <div class="col_half half">
                 <label>Talie (cm)</label>
