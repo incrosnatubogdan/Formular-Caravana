@@ -404,7 +404,7 @@ $(document).ready(function () {
                     $(".text-success").css("display", "flex");
                     setTimeout(function () {
                         $(".text-success").hide();
-                        location.reload();
+                        $(".pacient_nou").trigger("click");
                     }, 3000);
                     var lastPatient = $('input[name=name]').val();
                     
