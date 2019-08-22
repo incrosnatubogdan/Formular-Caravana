@@ -316,7 +316,10 @@ error_reporting(1);
             <p>Fisa a fost salvata</p>
         </div>
         <h3 class="doc_title">Fisa de urmarire a pacientului CCM</h3>
-        <img class="bottom" src="assets/down.png">
+        <a href="#status_check">
+            <img class="bottom" src="assets/down.png">
+        </a>
+        
         <form id="medical_form" method="post" target="votar">
             <?php   
                      if(isset($error))  
@@ -777,7 +780,7 @@ error_reporting(1);
             <div class="col_half">
                 <label>Fișă întocmită de</label>
                 <input type="text" name="doctor" class="form_control" />
-                <input type="text" name="status" class="status" />
+                <input type="text" name="status" class="status hide" />
                 <div class="check_holder">
                     <input type="checkbox" name="status_check" class="fake_box" id="status_check">
                     <label for="scales">Pacient Consultat</label>

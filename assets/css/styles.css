@@ -50,6 +50,7 @@ a {
 .list {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .list > a {
@@ -445,12 +446,14 @@ input[type=checkbox] {
     display: table;
     padding: 5% 0;
     border: transparent;
+    width: 100%;
 }
 
 .analize-table p.patient {
     padding: 2px;
     color: white;
     text-align: justify;
+    width: 33%;
 }
 
 .analize-table p.patient.seen {

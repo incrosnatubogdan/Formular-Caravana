@@ -46,7 +46,7 @@ function checkImportantData() {
         var elemenets = $(".protected_data");
         for (i = 0; i < elemenets.length; i++) {
             if ($(elemenets[i]).val().length) {
-                elemenets[i].disabled = 'true';
+                // elemenets[i].disabled = 'true';
                 $(elemenets[i]).addClass("blocked");
             }
         }
@@ -92,8 +92,10 @@ $(document).ready(function () {
             jQuery(document).on("click", '.patient, .last-patient', function (event) {
                 if ($(this).hasClass("seen")) {
                     var name = dir + seen + $(this).text() + '.json';
+                    $("#status_check").prop( "checked", true );
                 } else {
                     var name = dir + $(this).text() + '.json';
+                    $("#status_check").prop( "checked", false );
                 }
 
                 $('.overlay').hide();
@@ -327,8 +329,7 @@ $(document).ready(function () {
                 }
             });
 
-            
-            $('select[name=fumator]').change(function(){
+            $(document).on('change','select[name=fumator]',function(){
             // jQuery(document).on("click", 'select[name=fumator]', function (event) {
                 var value = $(this).val();
                 if (value == "Da_prezent" || value == "Da_trecut") {
@@ -337,8 +338,8 @@ $(document).ready(function () {
                     $(".smoker").addClass("hide_alcohol");
                 }
             });
-
-            $('select[name=alcool]').change(function(){
+            
+            $(document).on('change','select[name=alcool]',function(){ 
                 var value = $(this).val();
                 if (value == "Da") {
                     $(".alcohol_info").removeClass("hide_alcohol");
