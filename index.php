@@ -432,7 +432,7 @@ error_reporting(1);
             </div>
             <h2>Condiții de viață și de muncă și comportamente</h2>
             <div class="col_half col_third">
-                <label>Loc de munca(toxic/nontoxic)</label>
+                <label>Loc de munca (toxic/nontoxic)</label>
                 <select name="loc_munca">
                     <option value="frontdesk_uitat"></option>
                     <option value="Toxic">Toxic</option>

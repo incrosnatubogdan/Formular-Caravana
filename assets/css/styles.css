@@ -206,7 +206,7 @@ select[size] {
 .col_half {
     width: 49%;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: bottom;
     margin: 5px 0;
     position: relative;
 }
@@ -219,6 +219,8 @@ select[size] {
 
 .col_half label {
     display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .col_third.col_half {
