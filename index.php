@@ -345,7 +345,7 @@ error_reporting(1);
             </div>
             <div class="col_half">
                 <label>Data Nasterii</label>
-                <input type="text" name="datanasterii" class="form_control important protected_data" />
+                <input type="text" name="datanasterii" class="form_control important protected_data" placeholder="ZZ.LL.AAAA" />
             </div>
             <div class="col_half">
                 <label>Numar de telefon</label>

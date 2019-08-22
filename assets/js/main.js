@@ -399,21 +399,23 @@ $(document).ready(function () {
 
                 $("#search_patient").on('keyup', function () {
                     var value = $(this).val().toLowerCase();
-                    $(".table p").each(function () {
+                    $(".list p").each(function () {
                         if ($(this).text().toLowerCase().search(value) > -1) {
-                            $(this).show();
+                            $(this).parent().show();
                         } else {
-                            $(this).hide();
+                            $(this).parent().hide();
                         }
                     });
+                    $(".analize-table .list:first-child").hide();
                 });
 
                 jQuery(document).on("click", "img.bottom", function (event) {
-
-                    var $target = $('html,body');
-                    $target.animate({
-                        scrollTop: 0
-                    }, "slow");
+                    console.log(200)
+                    $('html, body').animate({
+                        scrollTop: $('.submit-button').offset().top
+                        //scrollTop: $('#your-id').offset().top
+                        //scrollTop: $('.your-class').offset().top
+                     }, 'slow');
                 });
 
                 setInterval(function () {
