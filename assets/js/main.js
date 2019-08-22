@@ -327,7 +327,8 @@ $(document).ready(function () {
                 }
             });
 
-            $('select[name=fumator]').on('change', function () {
+            
+            $('select[name=fumator]').change(function(){
             // jQuery(document).on("click", 'select[name=fumator]', function (event) {
                 var value = $(this).val();
                 if (value == "Da_prezent" || value == "Da_trecut") {
@@ -337,7 +338,7 @@ $(document).ready(function () {
                 }
             });
 
-            $("select[name=alcool]").on('change', function (event) {
+            $('select[name=alcool]').change(function(){
                 var value = $(this).val();
                 if (value == "Da") {
                     $(".alcohol_info").removeClass("hide_alcohol");
