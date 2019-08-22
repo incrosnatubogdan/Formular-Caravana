@@ -8,6 +8,7 @@ body {
     font-family: 'Poppins', sans-serif;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
+    cursor: pointer;
 }
 
 p,
@@ -19,8 +20,10 @@ h5,
 button,
 input,
 textarea,
-label {
+label,
+a {
     font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }
 
 .text-success {
