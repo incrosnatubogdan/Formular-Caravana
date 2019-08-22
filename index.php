@@ -120,17 +120,13 @@ error_reporting(1);
  } 
  echo "</div>"; 
 
- if(isset($_POST["submit"]))  
- {
-      $filename = $dir_to_save.$_POST['status'] . $_POST['name'] . ".json";
+ if(isset($_POST["submit"])) {
+      $filename = $dir_to_save.$_POST['status'] . $_POST['name'] . "-" . $_POST['datanasterii'] . ".json";
       fopen($filename, "w"); 
-      if(empty($_POST["name"]))  
-      {  
+      if(empty($_POST["name"])) {  
            $error = "<label class='text-danger'>Enter Name</label>";    
-      } else  
-      {  
-           if(file_exists($filename))  
-           {  
+      } else  {  
+           if(file_exists($filename))  {  
                 $current_data = file_get_contents($filename);  
                 $array_data = json_decode($current_data, true);  
                 $extra = array(  
@@ -216,11 +212,10 @@ error_reporting(1);
                 {  
                      $message = "<div class='text-success'><p>Fisa a fost salvata</p></div>";  
                 }  
-           }  
-           else  
-           {  
+           }  else  {  
                 $error = 'JSON File not exists';  
            }
+
            $extra = array(  
             'Nume' => $_POST['name'],
             'Asigurat' => $_POST['asigurat'],

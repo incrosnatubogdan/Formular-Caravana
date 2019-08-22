@@ -338,7 +338,7 @@ $(document).ready(function () {
                     $(".smoker").addClass("hide_alcohol");
                 }
             });
-            
+
             $(document).on('change','select[name=alcool]',function(){ 
                 var value = $(this).val();
                 if (value == "Da") {
@@ -382,6 +382,14 @@ $(document).ready(function () {
                     if (seenPatient.indexOf(seen) >= 0) {
                         $(this).addClass("seen");
                         $(this).text($(this).text().slice(6));
+                    }
+                    // var seenPatient = seenPatient.replace(/[0-9]/g, '').replace(/\./g,' ');
+                    // $(this).text(seenPatient);
+                });
+
+                $('.patient').each(function () {
+                    if ($(this).is(':empty')) {
+                        $(this).parent().hide();
                     }
                 });
 
