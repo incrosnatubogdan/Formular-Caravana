@@ -406,7 +406,8 @@ $(document).ready(function () {
                         $(".text-success").hide();
                         $('#medical_form').trigger("reset");
                         $('#medical_form')[0].reset();
-                        $("#medical_form").get(0).reset()
+                        $("#medical_form").get(0).reset();
+                        document.getElementById('medical_form').reset();
                     }, 5000);
                     var lastPatient = $('input[name=name]').val();
                     
