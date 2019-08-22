@@ -135,7 +135,7 @@ error_reporting(1);
                      'varsta' => $_POST['varsta'],
                      'datanasterii' => $_POST['datanasterii'],
                      'phone' => $_POST['phone'],
-                     'cnp' => $_POST['cnp'],
+                     'sex' => $_POST['sex'],
                      'Adresa' => $_POST['Adresa'],
                      'Localitate' => $_POST['Localitate'],
                      'Judet' => $_POST['Judet'],
@@ -331,12 +331,22 @@ error_reporting(1);
                     <input id="name" type="text" name="name" class="form_control important protected_data" />
             </div>
             <div class="col_half">
-                <label>Status asigurat</label>
-                <select name="asigurat" class="important protected_data">
-                    <option value="frontdesk_uitat"></option>
-                    <option value="Asigurat">Asigurat</option>
-                    <option value="Neasigurat">Neasigurat</option>
-                </select>
+                <div class="col_half">
+                    <label>Status asigurat</label>
+                    <select name="asigurat" class="important protected_data">
+                        <option value="frontdesk_uitat"></option>
+                        <option value="Asigurat">Asigurat</option>
+                        <option value="Neasigurat">Neasigurat</option>
+                    </select>
+                </div>
+                <div class="col_half col_third">
+                    <label>Sex</label>
+                    <select name="sex" class="important protected_data">
+                        <option value="frontdesk_uitat"></option>
+                        <option value="F">F</option>
+                        <option value="M">M</option>
+                    </select>
+                </div>
             </div>
             <div class="col_half">
                 <label>Vârstă (ani)</label>
@@ -358,6 +368,10 @@ error_reporting(1);
                 <label>Județ</label>
                 <input type="text" name="Judet" class="form_control protected_data" />
             </div>
+            <div class="col_half">
+                <input type="submit" name="submit" class="btn btn-info submit-button" />
+            </div>
+            
             <h2>Măsurători</h2>
             <div class="col_half half">
                 <label>Talie (cm)</label>
@@ -376,12 +390,16 @@ error_reporting(1);
                 <input type="text" name="Circumferinta_soldurilor" class="form_control" />
             </div>
             <div class="col_half">
-                <label>Tensiunea arteriala sistolica (mmHg)</label>
-                <input type="text" name="Tensiunea_arteriala_ortostatism" class="form_control important" />
-            </div>
-            <div class="col_half">
-                <label>Tensiunea arteriala diastolica (mmHg)</label>
-                <input type="text" name="Tensiunea_arteriala_clinostatism" class="form_control important" />
+                <label>Tensiunea arteriala (mmHg)</label>
+                <div class="col_half col_third">
+                    <input type="text" name="Tensiunea_arteriala_ortostatism" class="form_control important" />
+                </div>
+                <span style="font-size: 30px;">
+                    /
+                </span>
+                <div class="col_half col_third">
+                    <input type="text" name="Tensiunea_arteriala_clinostatism" class="form_control important" />
+                </div>
             </div>
             <h2>Anamneză</h2>
             <div class="col_half">
@@ -631,6 +649,7 @@ error_reporting(1);
                 <h3>Tiroida</h3>
                 <div class="checkbox_holder" id="tiroida"></div>
                 <select name="tiroida[]" id="tiroida" multiple="multiple">
+                    <option class="select_all" value="normal">Normal</option>
                     <option value="tiroida_palpabila">Tiroida palpabilă pe linia mediană a gâtului.
                         </option>
                     <option value="consistenta_elastica">Consistență elastică și omogenă, de dimensiuni
