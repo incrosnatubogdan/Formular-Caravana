@@ -3,7 +3,7 @@
 $dbHost     = 'localhost';
 $dbUsername = 'x28crvnc_form';
 $dbPassword = 'nG3_w_vxWR@a';
-$dbName     = 'x28crvnc_form';
+$dbName     = 'x28crvnc_formular';
 
 //Create connection and select DB
 $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
