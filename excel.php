@@ -12,6 +12,6 @@ foreach($files as $file){
 
 $newDataJSON = json_encode($newDataArray);
 file_put_contents("output/all.json",$newDataJSON);
-var_dump($newDataJSON);
+print_r($newDataJSON);
 
 ?>

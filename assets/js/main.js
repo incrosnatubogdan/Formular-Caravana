@@ -233,9 +233,11 @@ $(document).ready(function () {
             });
 
             jQuery(document).on("click", '.delete', function (event) {
-                // if(jQuery(this).parent.find("p.seen")) {
-                //     return;
-                // }
+                if(jQuery(this).attr('id').includes(seen)) {
+                    alert("Pacientul este consultat si nu poate fi sters.")
+                    return;
+                }
+                
                 deleteFile($(this).attr('id') , "");
                 jQuery(this).parent().addClass("deleted");
             });
@@ -399,6 +401,9 @@ $(document).ready(function () {
                     if ($(this).is(':empty')) {
                         $(this).parent().hide();
                     }
+                    if ($(this).text() == "-") {
+                        $(this).parent().hide();
+                    }
                 });
 
                 $('.menu-btn').on('click', function (e) {
@@ -408,20 +413,24 @@ $(document).ready(function () {
                     $('.menu').toggleClass('menu_active');
                 });
 
-                $(".submit-button").on('click', function () {
-                    $(".text-success").css("display", "flex");
-                    setTimeout(function () {
-                        $(".text-success").hide();
-                        // $(".pacient_nou").trigger("click");
-                    }, 3000);
-                    var lastPatient = $('input[name=name]').val();
-                    
-                    $('.last_patient').text(lastPatient);
-                    $(".stat_btn").trigger("click");
-                    var status = jQuery("#status_check").prop('checked');
-                    
-                    if (status == true) {
-                        deleteFile(patientDelete , "consulted");
+                $(".submit-button").on('click', function (e) {
+                    if(e.hasOwnProperty('originalEvent')) {
+                        $(".text-success").css("display", "flex");
+                        setTimeout(function () {
+                            $(".text-success").hide();
+                            $(".pacient_nou").trigger("click");
+                        }, 3000);
+                        var lastPatient = $('input[name=name]').val();
+                        
+                        $('.last_patient').text(lastPatient);
+                        $(".stat_btn").trigger("click");
+                        var status = jQuery("#status_check").prop('checked');
+                        
+                        if (status == true) {
+                            deleteFile(patientDelete , "consulted");
+                        } 
+                    } else {
+                        $(".text-success").css("display", "flex");
                     }
                     
                 });
@@ -442,14 +451,12 @@ $(document).ready(function () {
                     console.log(200)
                     $('html, body').animate({
                         scrollTop: $('.submit-button').offset().top
-                        //scrollTop: $('#your-id').offset().top
-                        //scrollTop: $('.your-class').offset().top
                      }, 'slow');
                 });
 
                 setInterval(function () {
                     $(".submit-button").click();
-                }, 300000);
+                }, 30000);
 
 
             });
