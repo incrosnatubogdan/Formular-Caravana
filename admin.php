@@ -29,7 +29,7 @@ $query = $db->query("SELECT * FROM formular ORDER BY id DESC");
             Generare lista completa
         </button>
         <button class="btn third export">
-            Export Pacienti
+            <a href="output/exportData.php">Export Pacienti</a>
         </button>
         <button class="btn third import">
             Import Pacienti
@@ -116,15 +116,15 @@ $query = $db->query("SELECT * FROM formular ORDER BY id DESC");
 			});
 
 		});
-        jQuery(document).on("click", '.export', function (event) {
-            $.ajax('./output/exportData.php')
-            .done(function () {
-                alert('Documentul a fost creat.');
-            })
-            .fail(function () {
-                alert('A aparut o problema la crearea documentului.');
-            })
-        });
+        // jQuery(document).on("click", '.export', function (event) {
+        //     $.ajax('./output/exportData.php')
+        //     .done(function () {
+        //         alert('Documentul a fost creat.');
+        //     })
+        //     .fail(function () {
+        //         alert('A aparut o problema la crearea documentului.');
+        //     })
+        // });
 
         jQuery(document).on("click", '.import', function (event) {
             $.ajax('./output/importPacients.php')

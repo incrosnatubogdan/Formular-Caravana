@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-$conn = new PDO("mysql:host=localhost;dbname=formular", 'root', '');
+$conn = new PDO("mysql:host=localhost;dbname=x28crvnc_form", 'x28crvnc_form', 'nG3_w_vxWR@a');
     // copy($_FILES['jsonFile']['tmp_name'], 'jsonFiles/'.$_FILES['jsonFile']['name']);
     $data = file_get_contents("all.json");
     $patients = json_decode($data);

@@ -13,13 +13,13 @@ if($query->num_rows > 0){
     $f = fopen('php://memory', 'w');
     
     //set column headers
-    $fields = array('ID', 'Name', 'Email', 'Phone', 'Created', 'Status');
+    $fields = array('ID', 'Name', 'Asigurat', 'Varsta', 'Data nasterii', 'status');
     fputcsv($f, $fields, $delimiter);
     
     //output each row of the data, format line as csv and write to file pointer
     while($row = $query->fetch_assoc()){
         $status = ($row['status'] == 'zzseen')?'Consultat':'Neconsultat';
-        $lineData = array($row['id'], $row['name'], $row['email'], $row['phone'], $row['created'], $status);
+        $lineData = array($row['id'], $row['name'], $row['asigurat'], $row['varsta'], $row['datanasterii'], $status);
         fputcsv($f, $lineData, $delimiter);
     }
     
