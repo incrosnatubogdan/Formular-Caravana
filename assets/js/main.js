@@ -79,6 +79,22 @@ function getCookie(cname) {
     return "";
 }
 
+function deleteFile(id , status) {
+    $.ajax('carav_1/delete.php?fileid=' + id)
+        .done(function () {
+            if (status == "consulted") {
+                alert('Pacientul a fost consultat.');
+            } else {
+                alert('Pacientul a fost sters.');
+            }
+            jQuery(".deleted").remove();
+        })
+        .fail(function () {
+            alert('A aparut o problema la stergerea pacientului.');
+            jQuery(".deleted").removeClass("deleted");
+        })
+}
+
 
 $(document).ready(function () {
             addCheckbox();
@@ -89,19 +105,21 @@ $(document).ready(function () {
             $('.select2').select2();
             $(".analize-table").clone().prependTo(".table");
             $(".today").val(today);
+            var patientDelete;
             jQuery(document).on("click", '.patient, .last-patient', function (event) {
+                patientDelete = $(this).text() + '.json';
                 if ($(this).hasClass("seen")) {
-                    var name = dir + seen + $(this).text() + '.json';
+                    var patientName = dir + seen + $(this).text() + '.json';
                     $("#status_check").prop( "checked", true );
                 } else {
-                    var name = dir + $(this).text() + '.json';
+                    var patientName = dir + $(this).text() + '.json';
                     $("#status_check").prop( "checked", false );
                 }
 
                 $('.overlay').hide();
                 // $("body").css("overflowY", "scroll");
                 $("body").css("height", "auto");
-                $.getJSON(name, function (JSONdata) {
+                $.getJSON(patientName, function (JSONdata) {
                     for (key in JSONdata) {
                         if (JSONdata.hasOwnProperty(key))
                             $('input[type=text][name=' + key + ']').val(JSONdata[key]);
@@ -218,21 +236,11 @@ $(document).ready(function () {
                 // if(jQuery(this).parent.find("p.seen")) {
                 //     return;
                 // }
-                deleteFile($(this).attr('id'));
+                deleteFile($(this).attr('id') , "");
                 jQuery(this).parent().addClass("deleted");
             });
 
-            function deleteFile(id) {
-                $.ajax('carav_1/delete.php?fileid=' + id)
-                    .done(function () {
-                        alert('Pacientul a fost sters.');
-                        jQuery(".deleted").remove();
-                    })
-                    .fail(function () {
-                        alert('A aparut o problema la stergerea pacientului.');
-                        jQuery(".deleted").removeClass("deleted");
-                    })
-            }
+            
 
             jQuery(document).on("click", '.signin_btn', function (event) {
                 var usernameList = ["medicb", "medici", "medicc"];
@@ -347,8 +355,8 @@ $(document).ready(function () {
                     $(".alcohol_info").addClass("hide_alcohol");
                 }
             });
-
-            $('#status_check').on('change', function () {
+            
+            $(document).on('change','#status_check',function(){
                 if (this.checked) {
                     $('.status').val(seen);
                 } else {
@@ -404,12 +412,18 @@ $(document).ready(function () {
                     $(".text-success").css("display", "flex");
                     setTimeout(function () {
                         $(".text-success").hide();
-                        $(".pacient_nou").trigger("click");
+                        // $(".pacient_nou").trigger("click");
                     }, 3000);
                     var lastPatient = $('input[name=name]').val();
                     
                     $('.last_patient').text(lastPatient);
                     $(".stat_btn").trigger("click");
+                    var status = jQuery("#status_check").prop('checked');
+                    
+                    if (status == true) {
+                        deleteFile(patientDelete , "consulted");
+                    }
+                    
                 });
 
                 $("#search_patient").on('keyup', function () {
