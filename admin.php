@@ -1,97 +1,171 @@
-<?php
-require_once('protect.php');
-?>
-<!DOCTYPE html>
+
 <html>
-
 <head>
-    <title>Fisa de urmarire a pacientului CCM</title>
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <script src="assets/js/main.js"></script>
+    <title>Import JSON File</title>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/admin/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/admin/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/admin/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/admin/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/admin/css/main.css">
 </head>
-
+<?php include 'output/dbConfig.php'; 
+$query = $db->query("SELECT * FROM formular ORDER BY id DESC");
+?>
 <body>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>?p=login" method="post">
-<label><input type="text" name="user" id="user" /> Name</label><br />
-<label><input type="password" name="keypass" id="keypass" /> Password</label><br />
-<input type="submit" id="submit" value="Login" />
-</form>
-    <br />
-    "<div class='text-success'><p>Fisa a fost salvata</p></div>
-    <iframe name="votar" style="display:none;"></iframe>
-    <div class="menu">
-        <a class="analize">Toate analizele</a>
-        <img src="assets/logo.png">
-    </div>
-    <div id="toate-analizele" class="overlay">
-        <div class="popup">
-            <a class="close close-joker">X</a>
-            <div class="table">
+<div class="limiter">
 
-            </div>
-        </div>
-    </div>
-    <div class="container" style="width:100%;">
-        <h3>Fisa de urmarire a pacientului CCM</h3><br />
-        <form id="medical_form" method="post" target="votar">
-            <?php   
-                     if(isset($error))  
-                     {  
-                          echo $error;  
-                     }  
-                     ?>
-            <br />
-            <label>Name</label>
-            <input id="name" type="text" name="name" class="form-control" /><br />
-            <label>Gender</label>
-            <select name="gender">
-                <option value="Masculin">M</option>
-                <option value="Feminin">F</option>
-                <option value="Altele">Altul</option>
-            </select><br />
-            <select id="antecedente-fiziologice" name="antecedente-fiziologice[]" multiple="multiple">
-                <option value="N">N</option>
-                <option value="S">S</option>
-                <option value="A">A</option>
-            </select><br />
-            <textarea type="text" placeholder="Altele" name="Antecedente-personale-fiziologice"
-                class="form-control"></textarea><br />
-            <label>Antecedente personale PATOLOGICE</label>
-            <label>Fumător:</label>
-            <select name="fumator">
-                <option value="Da-prezent">Da(prezent)</option>
-                <option value="Da-trecut">Da(trecut)</option>
-                <option value="Nu">Nu</option>
-            </select><br />
-            <h2>Chestionar alimentar:</h2>
-            <label>Nr. de mese/zi</label>
-            <input type="text" name="mese-zi" class="form-control" /><br />
-            <div class="col-sm-12 col-md-6 equal-height">
-                <label>Porții de legume (bifati)</label><br />
-                <input type="radio" name="legume" value=3/zi>3/zi <br>
-                <input type="radio" name="legume" value="1/zi">1/zi<br>
-                <input type="radio" name="legume" value="3/sapt">3/sapt<br>
-                <input type="radio" name="legume" value="<3/sapt">
-                < 3/sapt <br />
-                <label>Porții de fructe (bifati)</label><br />
-                <input type="radio" name="fructe" value=3/zi>3/zi <br>
-                <input type="radio" name="fructe" value="1/zi">1/zi<br>
-                <input type="radio" name="fructe" value="3/sapt">3/sapt<br>
-                <input type="radio" name="fructe" value="<3/sapt">
-                < 3/sapt <br />
-            </div>
-            <input type="submit" name="submit" class="btn btn-info submit-button" /><br />
-            <?php  
-                     if(isset($message))  
-                     {  
-                          echo $message;  
-                     }  
-                     ?>
-        </form>
-    </div>
-    <br />
+		<div class="container-table100">
+        <button class="btn third generate">
+            Generare lista completa
+        </button>
+        <button class="btn third export">
+            Export Pacienti
+        </button>
+        <button class="btn third import">
+            Import Pacienti
+        </button>
+        <button class="btn third delete_all blocked">
+            Sterge toti pacientii
+        </button>
+			<div class="wrap-table100">
+				<div class="table100 ver1">
+					<div class="table100-firstcol">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">Pacients</th>
+								</tr>
+							</thead>
+							<tbody>
+                            <?php
+                                while($row = $query->fetch_assoc()){ ?>
+								<tr class="row100 body">
+									<td class="cell100 column1"><?php echo $row['name']; ?></td>
+                                </tr>
+                                <?php } ?>
+							</tbody>
+						</table>
+					</div>
+					
+					<div class="wrap-table100-nextcols js-pscroll">
+						<div class="table100-nextcols">
+							<table>
+								<thead>
+									<tr class="row100 head">
+										<th class="cell100 column2">Asigurat</th>
+										<th class="cell100 column3">Varsta</th>
+										<th class="cell100 column4">Data Nasterii</th>
+										<th class="cell100 column5">Consultat</th>
+									</tr>
+								</thead>
+								<tbody>
+                                <?php
+                                $query = $db->query("SELECT * FROM formular ORDER BY id DESC");
+                                    while($row = $query->fetch_assoc()){ ?> 
+									<tr class="row100 body">
+										<td class="cell100"><?php echo $row['asigurat']; ?></td>
+                                        <td class="cell100"><?php echo $row['varsta']; ?></td>
+                                        <td class="cell100"><?php echo $row['datanasterii']; ?></td>
+                                        <td class="cell100"><?php echo ($row['status'] == 'zzseen')?'Consultat':'Neconsultat'; ?></td>
+                                    </tr>
+                                    <?php } ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
+
+<script src="assets/admin/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="assets/admin/vendor/bootstrap/js/popper.js"></script>
+	<script src="assets/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="assets/admin/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+
+			$(this).on('ps-x-reach-start', function(){
+				$(this).parent().find('.table100-firstcol').removeClass('shadow-table100-firstcol');
+			});
+
+			$(this).on('ps-scroll-x', function(){
+				$(this).parent().find('.table100-firstcol').addClass('shadow-table100-firstcol');
+			});
+
+		});
+        jQuery(document).on("click", '.export', function (event) {
+            $.ajax('./output/exportData.php')
+            .done(function () {
+                alert('Documentul a fost creat.');
+            })
+            .fail(function () {
+                alert('A aparut o problema la crearea documentului.');
+            })
+        });
+
+        jQuery(document).on("click", '.import', function (event) {
+            $.ajax('./output/importPacients.php')
+            .done(function () {
+                alert('Datele au fost importate.');
+                window.location.reload(true);
+            })
+            .fail(function () {
+                alert('A aparut o problema la crearea documentului.');
+            })
+        });
+
+        jQuery(document).on("click", '.generate', function (event) {
+            $.ajax('excel.php')
+            .done(function () {
+                alert('Datele au fost concatenate.');
+            })
+            .fail(function () {
+                alert('A aparut o problema la crearea documentului.');
+            })
+        });
+
+        jQuery(document).on("click", '.delete_all', function (event) {
+            if (jQuery(this).hasClass("blocked")) {
+                alert("Acum poti sterge toti pacientii")
+                return;
+            }
+            $.ajax('delete_all.php')
+            .done(function () {
+                alert('Toti pacientii au fost stersi');
+            })
+            .fail(function () {
+                alert('A aparut o problema la stergerea pacientilor.');
+            })
+        });
+
+        jQuery(document).on("click", '.delete_all', function (event) {
+            jQuery(this).removeClass("blocked")
+        });
+		
+		
+	</script>
+<!--===============================================================================================-->
+	<script src="assets/admin/js/main.js"></script>

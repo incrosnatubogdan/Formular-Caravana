@@ -18,8 +18,8 @@
                 <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Status Asigurat</th>
-                      <th>Varsta</th>
+                      <th>Email</th>
+                      <th>Phone</th>
                       <th>Created</th>
                       <th>Status</th>
                     </tr>

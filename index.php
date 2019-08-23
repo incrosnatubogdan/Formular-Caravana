@@ -501,7 +501,7 @@ error_reporting(1);
                 <h3>Țesut conjunctiv adipos</h3>
                 <div class="checkbox_holder" id="tesut_conjuctiv_adipos"></div>
                 <select name="tesut_conjuctiv_adipos[]" id="tesut_conjuctiv_adipos" multiple="multiple">
-                    <option class="select_all" value="normal_reprezentat">NORMAL REPREZENTAT</option>
+                    <option value="normal_reprezentat">NORMAL REPREZENTAT</option>
                     <option value="exces">În exces (adipozitate androidă/ginoidă)</option>
                     <option value="slab_reprezentat">Slab reprezentat</option>
                 </select>
@@ -512,7 +512,7 @@ error_reporting(1);
                 <h3>Sistem ganglionar</h3>
                 <div class="checkbox_holder" id="sistem_ganglionar"></div>
                 <select name="sistem_ganglionar[]" id="sistem_ganglionar" multiple="multiple">
-                    <option class="select_all" value="NORMALE">NORMAL</option>
+                    <!-- <option class="select_all" value="NORMALE">NORMAL</option> -->
                     <option value="fara_adenopatii_palpabile">Fara adenopatii palpabile</option>
                 </select>
                 <textarea type="text" placeholder="Observații" name="observatii_ganglionar"
