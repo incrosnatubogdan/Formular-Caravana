@@ -19,6 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/admin/css/main.css">
 </head>
 <?php include 'output/dbConfig.php'; 
+require_once('protect.php');
 $query = $db->query("SELECT * FROM formular ORDER BY id DESC");
 ?>
 <body>
