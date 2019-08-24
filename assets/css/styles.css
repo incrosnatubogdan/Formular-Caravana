@@ -370,7 +370,8 @@ input[type=checkbox] {
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
 }
 
-.fake_box:checked+label:before {
+.fake_box:checked+label:before,
+.fake_box.checked+label:before {
     background: #f35429;
 }
 
@@ -384,7 +385,8 @@ input[type=checkbox] {
     background: #ddd;
 }
 
-.fake_box:checked+label:after {
+.fake_box:checked+label:after,
+.fake_box.checked+label:after {
     content: '';
     position: absolute;
     left: 5px;

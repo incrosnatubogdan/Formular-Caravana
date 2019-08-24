@@ -51,6 +51,20 @@ function checkImportantData() {
             }
         }
     }
+
+    var fumator = jQuery("select[name=fumator]").val();
+    var alcool = jQuery("select[name=alcool]").val();
+    
+    if (alcool == "Da") {
+        jQuery(".alcohol_info").removeClass("hide_alcohol");
+    }
+    
+    if (fumator == "Da_trecut" || fumator == "Da_prezent") {
+       
+        $('.smoker').each(function () {
+            $(this).removeClass("hide_alcohol")
+        });
+    }
 }
 
 function editPopup() {
@@ -146,11 +160,15 @@ $(document).ready(function () {
                 var parentID = $(this).parent().parent().attr("id");
                 var checkStatus = $(this).is(":checked");
                 if (checkStatus == true) {
-                    $("select#" + parentID + " option").prop('selected', true);
-                    $(this).parent().parent().find("input[type=checkbox]").prop('checked', true);
+                    // $("select#" + parentID + " option").prop('selected', true);
+                    // $(this).parent().parent().find("input[type=checkbox]").prop('checked', true);
+                    $("select#" + parentID + " option").addClass('checked');
+                    $(this).parent().parent().find("input[type=checkbox]").addClass('checked');
                 } else {
-                    $("select#" + parentID + " option").prop('selected', false);
-                    $(this).parent().parent().find("input[type=checkbox]").prop('checked', false);
+                    // $("select#" + parentID + " option").prop('selected', false);
+                    // $(this).parent().parent().find("input[type=checkbox]").prop('checked', false);
+                    $("select#" + parentID + " option").removeClass('checked');
+                    $(this).parent().parent().find("input[type=checkbox]").removeClass('checked');
                 }
             });
 
@@ -192,11 +210,15 @@ $(document).ready(function () {
 
                 if ($(this).hasClass("select_all")) {
                     if (checkStatus == true) {
-                        $("select#" + parentID + " option").prop('selected', true);
-                        $(this).parent().find("input[type=checkbox]").prop('checked', true);
+                        // $("select#" + parentID + " option").prop('selected', true);
+                        // $(this).parent().find("input[type=checkbox]").prop('checked', true);
+                        $("select#" + parentID + " option").addClass('checked');
+                        $(this).parent().parent().find("input[type=checkbox]").addClass('checked');
                     } else {
-                        $("select#" + parentID + " option").prop('selected', false);
-                        $(this).parent().find("input[type=checkbox]").prop('checked', false);
+                        // $("select#" + parentID + " option").prop('selected', false);
+                        // $(this).parent().find("input[type=checkbox]").prop('checked', false);
+                        $("select#" + parentID + " option").removeClass('checked');
+                        $(this).parent().parent().find("input[type=checkbox]").removeClass('checked');
                     }
                 }
 
@@ -401,7 +423,8 @@ $(document).ready(function () {
                     if ($(this).is(':empty')) {
                         $(this).parent().hide();
                     }
-                    if ($(this).text() == "-") {
+
+                    if ($(this).text().length < 5) {
                         $(this).parent().hide();
                     }
                 });
@@ -448,7 +471,6 @@ $(document).ready(function () {
                 });
 
                 jQuery(document).on("click", "img.bottom", function (event) {
-                    console.log(200)
                     $('html, body').animate({
                         scrollTop: $('.submit-button').offset().top
                      }, 'slow');

@@ -159,6 +159,7 @@ error_reporting(1);
                      'medicatia_curenta' => $_POST['medicatia_curenta'],
                      'loc_munca' => $_POST['loc_munca'],
                      'fumator' => $_POST['fumator'],
+                     'alcool' => $_POST['alcool'],
                      'pachete_an' => $_POST['pachete_an'],
                      'an_nefumator' => $_POST['an_nefumator'],
                      'mese_zi' => $_POST['mese_zi'],
