@@ -1,12 +1,13 @@
 <?php
 //DB details
 $dbHost     = 'localhost';
-$dbUsername = 'x28crvnc_form';
 // $dbUsername = 'root';
-$dbPassword = 'nG3_w_vxWR@a';
 // $dbPassword = '';
-$dbName     = 'x28crvnc_formular';
 // $dbName     = 'formular';
+
+$dbUsername = 'x28crvnc_form';
+$dbPassword = 'nG3_w_vxWR@a';
+$dbName     = 'x28crvnc_formular';
 
 //Create connection and select DB
 $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
