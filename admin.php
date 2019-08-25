@@ -1,7 +1,8 @@
 
 <html>
 <head>
-    <title>Import JSON File</title>
+    <title>Admin Dashboard</title>
+    <html lang="ro">
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -16,7 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/admin/vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/admin/css/util.css">
-	<link rel="stylesheet" type="text/css" href="assets/admin/css/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/admin/css/main.css?ver=<?php echo time(); ?>">
 </head>
 <?php 
 include 'output/dbConfig.php'; 
@@ -30,12 +31,13 @@ $query = $db->query("SELECT * FROM formular ORDER BY id DESC");
         <button class="btn third generate">
             Generare lista completa
         </button>
+        <button class="btn third import">
+            <a href="output/importPacients.php">Import Pacienti</a>
+        </button>
         <button class="btn third export">
             <a href="output/exportData.php">Export Pacienti</a>
         </button>
-        <button class="btn third import">
-            Import Pacienti
-        </button>
+        
         <button class="btn third delete_all blocked">
             Sterge toti pacientii
         </button>
@@ -128,16 +130,16 @@ $query = $db->query("SELECT * FROM formular ORDER BY id DESC");
         //     })
         // });
 
-        jQuery(document).on("click", '.import', function (event) {
-            $.ajax('./output/importPacients.php')
-            .done(function () {
-                alert('Datele au fost importate.');
-                window.location.reload(true);
-            })
-            .fail(function () {
-                alert('A aparut o problema la crearea documentului.');
-            })
-        });
+        // jQuery(document).on("click", '.import', function (event) {
+        //     $.ajax('./output/importPacients.php')
+        //     .done(function () {
+        //         alert('Datele au fost importate.');
+        //         window.location.reload(true);
+        //     })
+        //     .fail(function () {
+        //         alert('A aparut o problema la crearea documentului.');
+        //     })
+        // });
 
         jQuery(document).on("click", '.generate', function (event) {
             $.ajax('excel.php')

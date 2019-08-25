@@ -271,14 +271,15 @@ error_reporting(1);
 
 <head>
     <title>Fisa de urmarire a pacientului CCM</title>
+    <html lang="ro">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
     <meta name="HandheldFriendly" content="true">
-    <link rel="stylesheet" href="assets/css/styles.css?v=2.2" />
-    <link rel="stylesheet" href="assets/css/select2.css" />
+    <link rel="stylesheet" href="assets/css/styles.css?ver=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="assets/css/select2.css?ver=<?php echo time(); ?>" />
 
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js?ver=<?php echo time(); ?>"></script>
+    <script src="assets/js/main.js?ver=<?php echo time(); ?>"></script>
 </head>
 
 <body>
