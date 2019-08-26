@@ -54,7 +54,7 @@ function checkImportantData() {
 
     var fumator = jQuery("select[name=fumator]").val();
     var alcool = jQuery("select[name=alcool]").val();
-    
+
     if (alcool == "Da") {
         jQuery(".alcohol_info").removeClass("hide_alcohol");
     }
@@ -454,6 +454,9 @@ $(document).ready(function () {
                         } 
                     } else {
                         $(".text-success").css("display", "flex");
+                        setTimeout(function () {
+                            $(".text-success").hide();
+                        }, 3000);
                     }
                     
                 });

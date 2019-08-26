@@ -277,6 +277,7 @@ error_reporting(1);
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" href="assets/css/styles.css?ver=<?php echo time(); ?>" />
     <link rel="stylesheet" href="assets/css/select2.css?ver=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="assets/css/styles_new.css?ver=<?php echo time(); ?>" />
 
     <script src="assets/js/jquery-3.3.1.min.js?ver=<?php echo time(); ?>"></script>
     <script src="assets/js/main.js?ver=<?php echo time(); ?>"></script>
@@ -294,6 +295,10 @@ error_reporting(1);
         <button class="top_bar pacient_nou"><img src="assets/add.png">Pacient Nou</button>
         <button class="top_bar analize"><img src="assets/search.png">Vezi toti pacientii</button>
         <button class="top_bar pozitie">Schimba-ti pozitia</button>
+        <div class="logo_holder">
+            <img src="assets/logo.png" class="logo" alt="">
+        </div>
+        
     </div>
     <div id="toate-analizele" class="overlay">
         <div class="popup">

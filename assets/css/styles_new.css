@@ -1,0 +1,50 @@
+.menu-bar {
+    bottom: 0;
+    /* background: #1041FB; */
+    top: auto;
+}
+
+button.top_bar {
+    bottom: 21px;
+    top: auto;
+    border: none;
+    box-shadow: none;
+    flex-direction: column;
+}
+
+button.top_bar.pozitie {
+    right: 35px;
+}
+
+#medical_form {
+    margin-bottom: 100px;
+}
+
+.logo_holder {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -15px;
+    /* background: #1041FB; */
+    background-color: #25A8E0;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.logo_holder img {
+    width: 100%;
+}
+
+h3.doc_title {
+    top: 0;
+    z-index: 12;
+    color: black;
+    left: 0;
+    right: auto;
+    width: 100vw;
+    background: white;
+    padding: 20px;
+}
