@@ -21,7 +21,7 @@
 </head>
 <?php 
 include 'output/dbConfig.php'; 
-require_once('protect.php');
+// require_once('protect.php');
 $query = $db->query("SELECT * FROM formular ORDER BY id DESC");
 if(isset($_POST["submit"])) {
     $extra = array(  
