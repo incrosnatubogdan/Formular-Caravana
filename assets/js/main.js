@@ -120,6 +120,13 @@ $(document).ready(function () {
             $(".analize-table").clone().prependTo(".table");
             $(".today").val(today);
             var patientDelete;
+            var currentLocation = 'output/localitate.json';
+            $.getJSON(currentLocation, function (JSONdata) {
+                for (key in JSONdata) {
+                    if (JSONdata.hasOwnProperty(key))
+                        $('input[type=text][name=' + key + ']').val(JSONdata[key]);
+                }
+            });
             jQuery(document).on("click", '.patient, .last-patient', function (event) {
                 patientDelete = $(this).text() + '.json';
                 if ($(this).hasClass("seen")) {
@@ -146,6 +153,7 @@ $(document).ready(function () {
                         $('input[type=checkbox][name=' + key + ']').val([JSONdata[key]]);
                     }
                 });
+    
                 setTimeout(function () {
                     addCheckbox();
                     checkImportantData();

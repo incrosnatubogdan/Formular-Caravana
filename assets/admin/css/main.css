@@ -354,5 +354,26 @@ th, td {
   border-bottom: 1px solid #f2f2f2;
 }
 
+form {
+  display: flex;
+  position: relative;
+  padding-top: 20px;
+  align-items: center;
+}
 
+form .col_half {
+  margin: 0 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+form h3 {
+  position: absolute;
+  top: -7px;
+  font-size: 18px;
+  left: 13px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
 
