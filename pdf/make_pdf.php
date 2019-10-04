@@ -85,7 +85,7 @@ img.logo {
 </head>
 <body>
 <img class="logo" src="logo.png" style="position: absolute;top: -20px;right: 140px;">
-<h1 style="font-family: 'DejaVu Sans', sans-serif;text-align: center;">Scrisoare Medicala</h1>
+<h1 style="font-family: 'DejaVu Sans', sans-serif;text-align: center;margin-top:60px;">Scrisoare Medicala</h1>
 
 <p style="margin:top:20px;font-family: 'DejaVu Sans', sans-serif;">Stimate(ă) coleg, vă informăm că $character->name, născut(ă) la data de $character->datanasterii, a fost consultat(ă) la data de $character->current_date  în cadrul proiectului Caravana cu Medici.</p>
 <h3 style="font-family: 'DejaVu Sans', sans-serif;">Diagnostice vechi</h3>
