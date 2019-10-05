@@ -487,9 +487,9 @@ $(document).ready(function () {
                      }, 'slow');
                 });
 
-                setInterval(function () {
-                    $(".submit-button").click();
-                }, 30000);
+                // setInterval(function () {
+                //     $(".submit-button").click();
+                // }, 30000);
 
 
             });
