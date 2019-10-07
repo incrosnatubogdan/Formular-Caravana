@@ -1,0 +1,15 @@
+{
+    "background_color": "purple",
+    "description": "Formularul caravanei",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "assets/logo.png",
+        "sizes": "100x50",
+        "type": "image/png"
+      }
+    ],
+    "name": "Formular Caravana",
+    "short_name": "Caravana",
+    "start_url": "index.php"
+  }
