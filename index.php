@@ -278,6 +278,7 @@ error_reporting(1);
     <link rel="stylesheet" href="assets/css/styles.css?ver=<?php echo time(); ?>" />
     <link rel="stylesheet" href="assets/css/select2.css?ver=<?php echo time(); ?>" />
     <link rel="stylesheet" href="assets/css/styles_new.css?ver=<?php echo time(); ?>" />
+    <link rel="manifest" href="manifest.webmanifest">
 
     <script src="assets/js/jquery-3.3.1.min.js?ver=<?php echo time(); ?>"></script>
     <script src="assets/js/main.js?ver=<?php echo time(); ?>"></script>
